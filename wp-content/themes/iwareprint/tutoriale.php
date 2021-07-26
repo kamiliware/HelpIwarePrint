@@ -19,7 +19,7 @@
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $args = array(
                     "post_type" => "tutoriale",
-                    "posts_per_page" => 7,
+                    "posts_per_page" => -1,
                     "paged" => $paged
                 );
 
@@ -34,9 +34,9 @@
                  <?php   while($query->have_posts()) : $query->the_post(); 
 			$counter++;
 			if ($counter % 7 == 0) { ?>
-			<div class="col-md-12 tutorial">
-                <div class="thumbnail-big">
-                    <?php the_field('film'); ?>
+			<div class="col-md-4 tutorial">
+                <div class="thumbnail thumbnail">
+                    <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
                 </div>
                 <h5><?php the_title();?></h5>
             </div>
@@ -46,7 +46,7 @@
             
             <div class="col-md-4 tutorial">
                 <div class="thumbnail thumbnail">
-                    <?php the_field('film'); ?>
+                    <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
                 </div>
                 <h5><?php the_title();?></h5>
             </div>
@@ -61,12 +61,13 @@
 	
 
         </div>
-		<div class="button">
-                    <a href="#" id="load-more-posts"><img  src="<?php echo esc_url(home_url('/')); ?>wp-content/uploads/2020/10/load.png" /></a>
-                </div>
+<!--		<div class="button">-->
+<!--                    <a href="#" id="load-more-posts"><img  src="--><?//= get_template_directory_uri()?><!--/img/load.png" /></a>-->
+<!--                </div>-->
 		<?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?>
 <?php endif; ?>
     </div>
+    <script type="text/javascript" src="<?= get_template_directory_uri()?>/js/youtubeHandler.js"></script>
 
 </section>
 

@@ -17,7 +17,6 @@ jQuery(document).ready(function($) {
     let page = 1;
     // const loadMorePosts = jQuery('#load-more-posts').text();
     let curPage = page;
-
     function loadMore() {
         page++;
         if (page - curPage === 1) {
@@ -25,7 +24,7 @@ jQuery(document).ready(function($) {
                 type: "GET",
                 url: '../materialy-wideo/page/' + page,
                 beforeSend: function () {
-                    jQuery('#load-more-postsx').html("<i class='fa fa-spinner fa-spin'></i>");
+                    jQuery('#load-more-posts').html("<i class='fa fa-spinner fa-spin'></i>");
                 },
                 complete: function () {
 
@@ -33,8 +32,8 @@ jQuery(document).ready(function($) {
                 success: function (data) {
                     const $data = jQuery(data).find('.tutorial');
                     if ($data.length > 0) {
-                        if ($("#load-more-posts #theImg").length === 0) {
-                            jQuery('#load-more-postsx').prepend('<img id="theImg" src="../wp-content/uploads/2020/10/load.png" alt="" />')
+                        if ($("#load-more-posts #theImg").length == 0) {
+                            jQuery('#load-more-posts').prepend('<img id="theImg" src="../img/load.png" alt="" />')
                         }
                         jQuery('.tutorial-container').append($data);
                         $data.css("display", "none");
@@ -48,7 +47,7 @@ jQuery(document).ready(function($) {
                 }
 
             });
-            loadMore;
+            loadMore();
         }
     }
 
@@ -72,12 +71,14 @@ jQuery(document).ready(function($) {
             });
         }
         const newsUri = window.location.href;
-        const newsUriYear = newsUri.substr(newsUri.lastIndexOf("#")+1);
-        if (window.location.href.indexOf($('#roadmapWrapper a.active').attr('data-year')) <= -1) {
-            $('#roadmapWrapper a').removeClass('active');
-            $('.yearContainer').hide();
-            $('#roadmapWrapper a[data-year= ' + newsUriYear + ']').addClass('active');
-            $('.yearContainer[data-year= ' + newsUriYear + ']').show();
+        if ($('#roadmapWrapper').length && newsUri.search(/#\d{4}/) > -1) {
+            const newsUriYear = newsUri.substr(newsUri.lastIndexOf("#")+1);
+            if (newsUri.indexOf($('#roadmapWrapper a.active').attr('data-year')) <= -1) {
+                $('#roadmapWrapper a').removeClass('active');
+                $('.yearContainer').hide();
+                $('#roadmapWrapper a[data-year=' + newsUriYear + ']').addClass('active');
+                $('.yearContainer[data-year=' + newsUriYear + ']').show();
+            }
         }
         $('.accordion div').each(function () {
             let list;
@@ -103,17 +104,18 @@ jQuery(document).ready(function($) {
             })
         });
 
-        $(window).scroll(function () {
-            if ($('#load-more-posts').length) {
-                const indicatorPosition = $('#load-more-posts').offset().top - $(window).scrollTop();
-                //console.log("indicators initial position:", indicatorPosition);
-                const totalScroll = $(window).scrollTop();
-                if ((indicatorPosition < 910) && (indicatorPosition > 900)) {
-                    curPage = page;
-                    loadMore();
-                }
-            }
-        });
+        // const loadMorePostsWrapper = $('#load-more-posts');
+        // $(window).scroll(function () {
+        //     if (loadMorePostsWrapper.length) {
+        //         const indicatorPosition = loadMorePostsWrapper.offset().top - $(window).scrollTop();
+        //         //console.log("indicators initial position:", indicatorPosition);
+        //         const totalScroll = $(window).scrollTop();
+        //         if ((indicatorPosition < 910) && (indicatorPosition > 900)) {
+        //             curPage = page;
+        //             loadMore();
+        //         }
+        //     }
+        // });
 
         $('.accordion .topic').on('click', function (event) {
             event.preventDefault();

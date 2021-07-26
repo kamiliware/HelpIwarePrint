@@ -242,7 +242,7 @@
 
             </div>
 
-            <a class="button" href="<?php echo esc_url(home_url('/tutorials')); ?>">Zobacz wszystkie</a>
+            <a class="button" href="<?php echo esc_url(home_url('/materialy-wideo')); ?>">Zobacz wszystkie</a>
 
         </div>
 

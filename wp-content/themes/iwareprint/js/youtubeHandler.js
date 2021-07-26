@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 function labnolThumb(id) {
-    const thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="Youtube thumbnail">',
+    const thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="Youtube thumbnail" loading="lazy"/>',
         play = '<div class="play"></div>';
     return thumb.replace("ID", id) + play;
 }

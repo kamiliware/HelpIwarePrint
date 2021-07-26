@@ -1,0 +1,219 @@
+/*
+
+Theme Name: iwarePRINT
+Theme URI: 
+Description: Szablon dla iwarePRINT
+Author: Kompromix
+Author URI: https://kompromix.pl
+Version: 1.0
+
+*/
+
+
+
+/* 
+.container_help h3 {
+	color:#777;
+} */
+#load-more-posts img{	
+	-webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+	
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+.container_help blockquote {
+	background: #f9f9f9;
+	background-color: #ebf7ff;
+	border-left: 5px solid #0099FE;
+	margin: 1.5em 10px;
+	padding: 0.5em 2rem;  
+	text-align: left;
+}
+.container_help blockquote:before {
+	color: #ccc;
+	content: "";
+	font-size: 4em;
+	line-height: 0.1em;
+	/*   margin-right: 0.25em; */
+	vertical-align: -0.4em;
+}
+
+.container_help blockquote p {
+	display: inline;	
+}
+
+
+.container_help a {
+	font-weight: 700;
+	color: #0099FE;
+}
+
+.helpdesk-content.content {
+	text-align: left;
+}
+
+.container_help pre {
+	padding: 1.5rem;
+	border: 1px solid #ccd0d4;
+	width: fit-content;
+	max-width: 100%;
+}
+
+.container_help ul {
+	list-style: revert;
+	padding: revert;
+	margin: revert;
+}
+
+@media only screen and (min-width: 768px) {
+
+	.container_help {
+		max-width: 980px;
+/* 		margin-left: 2rem; */
+	}
+
+	.container_help img, .container_help iframe {
+		display: block;
+		max-width: 100%;
+		margin: 1em auto 2em;
+	}
+
+	.container_help ol>li, .container_help ul>li {
+		cursor: default;
+	/* 	min-height: 4rem; */
+		margin-bottom: 1.5rem;
+	}
+
+	.container_help ul {
+		margin: 2em 0;
+	}
+	
+	    h1, h2, h3 {
+        font-size: 3.7rem;
+    }
+
+    
+    header img.logo {
+        width: 233px;
+    }
+    
+
+	#helpdesk-single h2,
+	#helpdesk-single h3 {
+		font-size: 2.8rem;
+		line-height: 3.8rem;
+		font-weight: 900;
+	}
+	
+	#helpdesk-single h3 {
+		font-size: 2.3rem;
+		line-height: 2.8rem;
+		font-weight: 600;
+	}
+
+	#helpdesk-single h4 {
+		font-size: 2.3rem;
+		font-weight: 900;
+	}
+	
+	#helpdesk-single h1, 
+	#helpdesk-single h2, 
+	#helpdesk-single h3, 
+	#helpdesk-single h4 {
+		text-align: left;
+		margin: 2.5rem 0 1rem;
+	}
+	
+}
+
+/*
+
+.hexagon {
+  position: relative;
+  width: 45px; 
+  height: 25.98px;
+  background-color: #60baff;
+  margin: 12.99px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 22.5px solid transparent;
+  border-right: 22.5px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 12.99px solid #60baff;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 12.99px solid #60baff;
+}
+
+
+
+#helpdesk-single .helpdesk-content ol, #helpdesk-single .helpdesk-content ul, #helpdesk-single .helpdesk-content dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    counter-reset: num;
+    list-style-type: none;
+    margin: 3em 0 3em 4em;
+}
+
+
+#helpdesk-single .helpdesk-content ol>li:before {
+    content: counter(num,decimal);
+    counter-increment: num;
+    display: block;
+    float: left;
+    text-align: center;
+    width: 1.7em;
+    height: 1.7em;
+    margin-left: -60px;
+    margin-top: -.4em;
+    line-height: 1.5em;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #170f4cb0;
+	background-color: #c7e0fd75;
+    border: 2px solid #b5e1ff80;
+    border-radius: 50%;
+}
+#helpdesk-single .helpdesk-content ul, #helpdesk-single .helpdesk-content ul li {
+    list-style-type: none;
+    position: relative;
+}
+
+#helpdesk-single .helpdesk-content ul li {
+	margin-top: 1rem;
+	padding-left: 1em;
+}
+
+#helpdesk-single .helpdesk-content ul li:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    transform: rotate(45deg);
+    clip: rect(0,20px,20px,0);
+    top: 9px;
+    left: 0;
+    height: 4px;
+    width: 4px;
+    margin-right: 0;
+    background-color: transparent;
+    border-color: #170f4c #170f4c transparent transparent;
+    border-style: solid;
+    border-width: 2px;
+}
+
+*/

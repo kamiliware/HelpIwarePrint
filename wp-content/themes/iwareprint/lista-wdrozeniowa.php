@@ -41,11 +41,11 @@
 
                             <li>
                                 <span><?= get_the_date( 'Y-m-d' ); ?></span>
-                                <h3 style="color: #333;padding: 0 0 10px;"><?= the_title(); ?></h3>
+                                <h4 style="color: #333;padding: 0 0 10px;"><?= the_title(); ?></h4>
                                 <?php
                                 $categories = get_the_category();
                                 if ( ! empty( $categories ) ) {
-                                    echo '<h4 style="font-size: 20px;color: #f21559;">' . esc_html( $categories[0]->name ) . '</h4>';
+                                    echo '<h5 style="font-size: 20px;color: #f21559;">' . esc_html( $categories[0]->name ) . '</h5>';
                                 }
                                 ?>
                                 <p style="font-size: 16px;line-height: 1.4;">
@@ -186,11 +186,11 @@
                                 <li>
                                         <span class="subtopic-title">
                                         <em><?php echo get_the_date( 'Y-m-d' ); ?></em>
-                                            <h3 style="color: #333;padding: 0 0 10px;"><?= the_title(); ?></h3>
+                                            <h4 style="color: #333;padding: 0 0 10px;"><?= the_title(); ?></h4>
                                             <?php
                                             $categories = get_the_category();
                                             if ( ! empty( $categories ) ) {
-                                                echo '<h4 style="font-size: 20px;color: #f21559;">' . esc_html( $categories[0]->name ) . '</h4>';
+                                                echo '<h5 style="font-size: 20px;color: #f21559;">' . esc_html( $categories[0]->name ) . '</h5>';
                                             }
                                             ?>
                                             <p style="font-size: 16px;line-height: 1.4;">

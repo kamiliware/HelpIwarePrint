@@ -19,7 +19,7 @@
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $args = array(
                     "post_type" => "tutoriale",
-                    "posts_per_page" => -1,
+                    "posts_per_page" => 9,
                     "paged" => $paged
                 );
 
@@ -49,6 +49,9 @@
                     <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
                 </div>
                 <h5><?php the_title();?></h5>
+                <?php if (is_null(get_field('film')) or is_null(get_field('filmid'))): ?>
+                    Tutaj nie ma żadnego filmu
+                <?php endif; ?>
             </div>
             
 			
@@ -57,9 +60,10 @@
 			endwhile; 
 			next_posts_link();
 			?>
-			
-	
-
+        </div>
+        <div id="morePostsWrapper"></div>
+        <div class="button">
+            <a href="#" id="load-more-posts">Wczytaj więcej</a>
         </div>
 <!--		<div class="button">-->
 <!--                    <a href="#" id="load-more-posts"><img  src="--><?//= get_template_directory_uri()?><!--/img/load.png" /></a>-->

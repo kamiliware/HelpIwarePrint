@@ -1,17 +1,6 @@
 /* Light YouTube Embeds by @labnol */
 /* Web: http://labnol.org/?p=27941 */
-document.addEventListener("DOMContentLoaded", function () {
-    let div,
-        n,
-        v = document.getElementsByClassName("youtube-player");
-    for (n = 0; n < v.length; n++) {
-        div = document.createElement("div");
-        div.setAttribute("data-id", v[n].dataset.id);
-        div.innerHTML = labnolThumb(v[n].dataset.id);
-        div.onclick = labnolIframe;
-        v[n].appendChild(div);
-    }
-});
+document.addEventListener("DOMContentLoaded", youtubeLoader());
 function labnolThumb(id) {
     const thumb = '<img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="Youtube thumbnail" loading="lazy"/>',
         play = '<div class="play"></div>';

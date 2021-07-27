@@ -74,9 +74,16 @@ p {
 header {
     padding: 18px 20px;
 /*     height: 75px; */
-    box-shadow: 0px 1px 7px 0px #aaa;
-    z-index: 1;
-    position: relative;
+    box-shadow: 0 1px 7px 0 #aaa;
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: inherit;
+}
+.header-ph {
+    height: 90px;
 }
 
 header img.logo{
@@ -583,7 +590,7 @@ button#searchsubmit {
 .list ul li {
     background: #FFFFFF;
     border-radius: 5px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     margin-bottom: 20px;
     position: relative;
     padding-left: 50px;
@@ -716,7 +723,7 @@ button#searchsubmit {
     line-height: 2.8rem;
     text-align: left;
     padding: 20px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-left: 1px solid #E7E7E7;
     border-radius: 5px;
 }
@@ -816,7 +823,7 @@ button#searchsubmit {
     line-height: 2.8rem;
     text-align: left;
     padding: 20px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-left: 1px solid #E7E7E7;
     border-radius: 5px;
     background: #FFFFFF;
@@ -935,7 +942,7 @@ input.field {
 #newsletter form input {
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-radius: 5px;
     display: block;
     width: 100%;
@@ -1049,7 +1056,7 @@ footer .copy ul li{
 /* Helpdesk - menu */
 .helpdesk-menu {
     padding: 50px 20px;
-/*     box-shadow: 4px 4px 4px 0px #E7E7E7; */
+/*     box-shadow: 4px 4px 4px 0 #E7E7E7; */
 }
 
 .helpdesk-menu ul, .helpdesk-menu ul li.helpdesk-category a {
@@ -1144,7 +1151,7 @@ footer .copy ul li{
 .helpdesk-tooltip {
 	padding: 20px 20px 10px;
 	background: #FFFFFF;
-    box-shadow: 0px 4px 15px 0px #E7E7E7;
+    box-shadow: 0 4px 15px 0 #E7E7E7;
 	text-align: left;
 	border-radius: 5px;
 /* 	display: inline-block; */
@@ -1211,7 +1218,7 @@ footer .copy ul li{
 	background: #FFFFFF;
 	height: 250px;
 	padding: 20px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-left: 1px solid #E7E7E7;
     border-radius: 5px;
 	margin-left: 30px;
@@ -1249,7 +1256,7 @@ footer .copy ul li{
     margin-bottom: 30px;
 	background: #FFFFFF;
 	padding: 20px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-left: 1px solid #E7E7E7;
     border-radius: 5px;
 	position: relative;
@@ -1356,7 +1363,7 @@ footer .copy ul li{
 .sort input {
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-radius: 5px;
     display: block;
     width: 100%;
@@ -1396,7 +1403,7 @@ footer .copy ul li{
     margin: 0 auto 15px;
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-radius: 5px;
     display: block;
     width: 100%;
@@ -1422,7 +1429,7 @@ footer .copy ul li{
 .subtopic ul li {
     background: #FFFFFF;
     border-radius: 5px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     margin-bottom: 15px;
     position: relative;
     padding-left: 50px;
@@ -1605,14 +1612,12 @@ footer .copy ul li{
 .list-top ul li {
     background: #FFFFFF;
     border-radius: 5px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     margin-bottom: 15px;
     position: relative;
-    padding-left: 50px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 20px 20px 50px;
     text-align: left;
+    font-size: 16px;
 }
 
 .list-top ul li::before {
@@ -1677,8 +1682,8 @@ footer .copy ul li{
     }
 
     .list-top ul li {
-        font-size: 2.3rem;
-        line-height: 3rem;
+        font-size: 16px;
+        line-height: 1.2;
     }
 
     .list-top ul li::before {
@@ -1691,7 +1696,7 @@ footer .copy ul li{
 .download {
     padding: 30px 30px 5px;
     background: #FFFFFF;
-    box-shadow: 0px 4px 8px 0px #E7E7E7;
+    box-shadow: 0 4px 8px 0 #E7E7E7;
     margin-bottom: 15px;
 }
 
@@ -1729,11 +1734,10 @@ h2.eap_section_title_807 {
 	position: relative;
     margin: 0 auto 15px;
     background: #FFFFFF;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     border-radius: 5px;
     display: block;
     width: 100%;
-    padding: 10px 20px;
     border: 1px solid #0099FE;
 	    font-size: 2.3rem;
 	text-align: left;
@@ -1746,13 +1750,10 @@ h2.eap_section_title_807 {
 .sp-ea-single {
     background: #FFFFFF!important;
     border-radius: 5px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     margin-bottom: 15px;
     position: relative;
-    padding-left: 35px;
-    padding-right: 20px;
-    padding-top: 0px;
-    padding-bottom: 0;
+    padding:0 20px 0 35px;
     text-align: left;
 }
 
@@ -1944,7 +1945,7 @@ h3#reply-title {
 	border: none;
 	background: #FFFFFF;
     border-radius: 5px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     position: relative;
     padding: 20px;
     text-align: left;
@@ -1955,7 +1956,7 @@ h3#reply-title {
 	border: none;
 	background: #FFFFFF;
     border-radius: 5px;
-    box-shadow: 0px 4px 0px 0px #E7E7E7;
+    box-shadow: 0 4px 0 0 #E7E7E7;
     position: relative;
     padding: 10px;
     text-align: left;
@@ -2288,6 +2289,8 @@ Koniec komentarza */
     cursor: pointer;
 }
 
+#load-more-posts {display: block; padding: 10px; box-shadow: 0 5px 5px 0 rgba(0,0,0,.1); font-size: 20px; text-align: center; margin: 20px 0; width: 100%;}
+#load-more-posts.blocked {color: gray!important; cursor: default}
 .hamburger-menu-container {display:block;}
 #toggle-label-sub:before {  display:none;}
 #toggle-sub {  display:none;}
@@ -2318,14 +2321,13 @@ Koniec komentarza */
 
     #toggle-sub:checked +#toggle-label-sub {
         background:transparent;
-        border: 2px solid transparent;left:auto;right:0;position:fixed;top:106px;right:10px;
+        border: 2px solid transparent;left:auto;position:fixed;top:106px;right:10px;
     }
 
     #toggle-sub + label span {
         width: 30px;
         height: 3px;
         top: 50%;
-        left: 0;
         display: block;
         background: #fff;
         transition: .5s;
@@ -2449,3 +2451,100 @@ Koniec komentarza */
         display:flex;
     }
 }
+
+/*Preloader*/
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f21559;
+    margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+}
+.lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+}
+.lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+}
+.lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+}
+.lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+}
+.lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+}
+.lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+}
+.lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+}
+.lds-roller div:nth-child(4n + 1):after {
+    background: #0099FE;
+}
+.lds-roller div:nth-child(4n + 2):after {
+    background: #F1C119;
+}
+.lds-roller div:nth-child(4n + 3):after {
+    background: #180F4C;
+}
+@keyframes lds-roller {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#trp-floater-ls {right: 0; bottom: auto!important; top: 190px; left: auto!important}

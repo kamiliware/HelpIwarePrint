@@ -13,47 +13,22 @@ Jeśli chcesz podlinkować plik JavaScript, który znajduje się na innym serwer
 "Dodaj wstawkę HTML", jako że jest to kod HTML linkujący do pliku JavaScript.
 
 Koniec komentarza */
-jQuery(document).ready(function($) {
-    let page = 1;
-    // const loadMorePosts = jQuery('#load-more-posts').text();
-    let curPage = page;
-    function loadMore() {
-        page++;
-        if (page - curPage === 1) {
-            $.ajax({
-                type: "GET",
-                url: '../materialy-wideo/page/' + page,
-                beforeSend: function () {
-                    jQuery('#load-more-posts').html("<i class='fa fa-spinner fa-spin'></i>");
-                },
-                complete: function () {
-
-                },
-                success: function (data) {
-                    const $data = jQuery(data).find('.tutorial');
-                    if ($data.length > 0) {
-                        if ($("#load-more-posts #theImg").length == 0) {
-                            jQuery('#load-more-posts').prepend('<img id="theImg" src="../img/load.png" alt="" />')
-                        }
-                        jQuery('.tutorial-container').append($data);
-                        $data.css("display", "none");
-                        $data.fadeIn("fast");
-                    } else {
-                        jQuery('#load-more-posts').html('');
-                    }
-                },
-                error: function () {
-                    jQuery('#load-more-posts').html('');
-                }
-
-            });
-            loadMore();
+function youtubeLoader() {
+    let div,
+        n,
+        v = document.getElementsByClassName("youtube-player");
+    for (n = 0; n < v.length; n++) {
+        div = document.createElement("div");
+        if (v[n].innerHTML === "") {
+            div.setAttribute("data-id", v[n].dataset.id);
+            div.innerHTML = labnolThumb(v[n].dataset.id);
+            div.onclick = labnolIframe;
+            v[n].appendChild(div);
         }
     }
-
-
-    jQuery(document).ready(function ($) {
-
+}
+jQuery(document).ready(function($) {
+    // const loadMorePosts = jQuery('#load-more-posts').text();
         const hash = window.location.hash;
         const anchor = $(hash);
         if (anchor.length > 0) {
@@ -117,6 +92,47 @@ jQuery(document).ready(function($) {
         //     }
         // });
 
+        const loadMorePostsTrigger = $('#load-more-posts');
+        const morePostsWrapper = $('#morePostsWrapper');
+        let page = 1;
+        if (loadMorePostsTrigger.not('.blocked')) {
+            loadMorePostsTrigger.on('click', function(event) {
+                event.preventDefault();
+                page++;
+                $.ajax({
+                    type: "GET",
+                    url: '../materialy-wideo/page/' + page,
+                    beforeSend: function () {
+                        morePostsWrapper.html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
+                    },
+                    complete: function () {
+                        morePostsWrapper.html('');
+                    },
+                    success: function (data) {
+                        const $data = jQuery(data).find('.tutorial');
+                        if ($data.length > 0) {
+                            if (morePostsWrapper.html === "") {
+                                morePostsWrapper.prepend('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>')
+                            }
+                            $('.tutorial-container').append($data);
+                            youtubeLoader();
+                            $data.css("display", "none");
+                            $data.fadeIn("fast");
+                        } else {
+                            loadMorePostsTrigger.html('Nie ma więcej filmów').addClass('blocked');
+                        }
+                    },
+                    error: function () {
+                        loadMorePostsTrigger.html('Wystąpił problem z pobieraniem. Proszę spróbować ponownie');
+                    }
+                });
+            });
+        } else {
+            loadMorePostsTrigger.on('click', function(event) {
+                event.preventDefault();
+            })
+        }
+
         $('.accordion .topic').on('click', function (event) {
             event.preventDefault();
             $(this).toggleClass('is-open');
@@ -177,7 +193,4 @@ jQuery(document).ready(function($) {
             }
 
         });
-
-
-    });
 })

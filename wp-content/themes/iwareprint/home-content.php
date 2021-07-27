@@ -165,10 +165,10 @@
             $do_not_duplicate = $post->ID;
             
             ?>
-            
+
             <div class="col-md-4 tutorial">
-                <div class="thumbnail">
-                    <?php the_field('film'); ?>
+                <div class="thumbnail thumbnail">
+                    <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
                 </div>
                 <h5><?php the_title();?></h5>
             </div>
@@ -254,6 +254,7 @@
             <a class="button" href="<?php echo esc_url(home_url('/blog')); ?>">Zobacz wszystkie</a>
 
         </div>
+        <script type="text/javascript" src="<?= get_template_directory_uri()?>/js/youtubeHandler.js"></script>
 
     </section>
 

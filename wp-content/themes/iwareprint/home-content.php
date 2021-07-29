@@ -118,20 +118,34 @@
 
 						?>
 						
-						<li><?php the_title();?></li>
+						<li>
+                            <h4 style="color: #333;padding: 0 0 10px;"><?= the_title(); ?></h4>
+                            <?php
+                            $categories = get_the_category();
+                            if ( ! empty( $categories ) ) {
+                                echo '<h5 style="font-size: 20px;color: #f21559;">' . esc_html( $categories[0]->name ) . '</h5>';
+                            }
+                            ?>
+                            <p style="font-size: 16px;line-height: 1.4;">
+                                <?= the_content();?>
+                            </p>
+                            <?php if (get_field('link_do_bazy_wiedzy') && !is_null(get_field('link_do_bazy_wiedzy'))): ?>
+                                <a target="_blank" style="color: #0099fe;" href="<?= get_field('link_do_bazy_wiedzy') ?>" class="read-link">Czytaj więcej</a>
+                            <?php endif; ?>
+                        </li>
 						
 						<?php endwhile; ?>
 
                         </ul>
-                        <a class="d-lg-none" href="<?php echo esc_url(home_url('/aktualizacje')); ?>">Pełna lista</a>
-                        <a class="d-none d-lg-inline-block" href="<?php echo esc_url(home_url('/aktualizacje')); ?>">Zobacz pełną listę</a>
+                        <a class="d-lg-none button" href="<?php echo esc_url(home_url('/aktualizacje')); ?>">Pełna lista</a>
+                        <a class="d-none d-lg-inline-block button" href="<?php echo esc_url(home_url('/aktualizacje')); ?>">Zobacz pełną listę</a>
                     </div>
                 </div>
 
                 <div class="col-md-4 download-home">
                     <div class="container">
                         <h3>Materiały<br>do pobrania</h3>
-                        <a href="<?php echo esc_url(home_url('/do-pobrania')); ?>">Zobacz</a>
+                        <a class="button" href="<?php echo esc_url(home_url('/do-pobrania')); ?>">Zobacz</a>
                         <img src="<?php echo get_template_directory_uri(); ?>/img/tablet.png" alt="tablet">
                     </div>
                 </div>

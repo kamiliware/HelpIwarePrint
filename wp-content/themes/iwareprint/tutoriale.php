@@ -34,26 +34,42 @@
                  <?php   while($query->have_posts()) : $query->the_post(); 
 			$counter++;
 			if ($counter % 7 == 0) { ?>
-			<div class="col-md-4 tutorial">
-                <div class="thumbnail thumbnail">
-                    <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
-                </div>
-                <h5><?php the_title();?></h5>
-            </div>
+                <?php if (is_null(get_field('filmid'))): ?>
+                    <div class="col-md-4 tutorial">
+                        <div class="thumbnail thumbnail">
+                            <?php the_field('film'); ?>
+                        </div>
+                        <h5><?php the_title();?></h5>
+                    </div>
+                <?php else: ?>
+                    <div class="col-md-4 tutorial">
+                        <div class="thumbnail thumbnail">
+                            <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
+                        </div>
+                        <h5><?php the_title();?></h5>
+                    </div>
+                <?php endif; ?>
 			<?php
 			}else{
 			?>
-            
-            <div class="col-md-4 tutorial">
-                <div class="thumbnail thumbnail">
-                    <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
+
+
+                <?php if (is_null(get_field('filmid'))): ?>
+                <div class="col-md-4 tutorial">
+                    <div class="thumbnail thumbnail">
+                        <?php the_field('film'); ?>
+                    </div>
+                    <h5><?php the_title();?></h5>
                 </div>
-                <h5><?php the_title();?></h5>
-                <?php if (is_null(get_field('film')) or is_null(get_field('filmid'))): ?>
-                    Tutaj nie ma żadnego filmu
+                <?php else: ?>
+                    <div class="col-md-4 tutorial">
+                        <div class="thumbnail thumbnail">
+                            <div class="youtube-player" data-id="<?php the_field('filmid'); ?>"></div>
+                        </div>
+                        <h5><?php the_title();?></h5>
+                    </div>
                 <?php endif; ?>
-            </div>
-            
+
 			
             <?php 
 			}

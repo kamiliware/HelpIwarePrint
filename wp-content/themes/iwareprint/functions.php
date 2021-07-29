@@ -166,6 +166,8 @@ function aktu_post_type() {
 }
 add_action( 'init', 'aktu_post_type' );
 
+add_filter( 'use_block_editor_for_post', '__return_false' );
+
 /**
  * @param string $key
  * @return string

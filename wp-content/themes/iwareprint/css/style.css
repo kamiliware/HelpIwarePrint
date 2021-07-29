@@ -436,7 +436,9 @@ background: #fff;
         padding: 12px 50px;
         display: inline-block;
         border-radius: 5px;
+        transition: ease all 250ms
     }
+    #boxes a.box-link:hover {background: #a10e3b}
 
 }
 
@@ -492,6 +494,8 @@ button#searchsubmit {
     border-radius: 5px;
     width: 90%;
 }
+
+#links a:hover {text-decoration: underline}
 
 @media only screen and (min-width: 768px) {
     
@@ -567,7 +571,7 @@ button#searchsubmit {
     color: #180F4C;
 }
 
-#list-download a {
+#list-download a.button {
     background: #F21559;
     color: #fff;
     margin: 30px 0 50px;
@@ -576,8 +580,8 @@ button#searchsubmit {
     padding: 12px 50px;
     display: inline-block;
     border-radius: 5px;
-    width: 100%;
 }
+#list-download a.button:hover {background: #a10e3b}
 
 .list {
     background: #EEEEEE;
@@ -630,7 +634,7 @@ button#searchsubmit {
 .download-home {
     background: #180F4C;
     padding-bottom: 50px;
-	box-shadow: 0;
+	box-shadow: none;
 }
 
 #list-download .download-home h3 {
@@ -649,6 +653,7 @@ button#searchsubmit {
     border-radius: 5px;
     width: 100%;
 }
+.download a:hover, .download-home a:hover {background: #a10e3b}
 
 @media only screen and (min-width: 992px) {
 
@@ -739,6 +744,7 @@ button#searchsubmit {
     border-radius: 5px;
     width: 100%;
 }
+#tutorials a.button:hover {background: #a10e3b}
 
 @media only screen and (min-width: 768px) {
 
@@ -840,6 +846,7 @@ button#searchsubmit {
     border-radius: 5px;
     width: 100%;
 }
+#blog a.button:hover {background: #a10e3b}
 
 @media only screen and (min-width: 768px) {
 
@@ -1310,6 +1317,7 @@ footer .copy ul li{
     border-radius: 5px;
     width: 90%;
 }
+#footer-links a:hover {background: #a10e3b}
 
 @media only screen and (min-width: 768px) {
 
@@ -1351,6 +1359,7 @@ footer .copy ul li{
         margin: 5px 0 50px;
         padding: 0;
     }
+    #footer-links a:hover {background: transparent; text-decoration: underline}
 
 }
 
@@ -1619,6 +1628,9 @@ footer .copy ul li{
     text-align: left;
     font-size: 16px;
 }
+.read-link:hover {
+    text-decoration: underline;
+}
 
 .list-top ul li::before {
     content: '';
@@ -1714,6 +1726,7 @@ footer .copy ul li{
     background: transparent;
     padding: 0;
 }
+.download a:hover {text-decoration: underline; background: transparent}
 
 @media only screen and (min-width: 768px) {
 
@@ -2014,6 +2027,7 @@ h3#reply-title {
 	padding: 15px 30px;
 	display: inline-block;
 }
+#footer .f-btn:hover, #bottom-contact .f-btn:hover {background: #a10e3b}
 
 #footer .col-lg-3 .f-btn {
 	font-size: 14px;
@@ -2259,7 +2273,7 @@ Koniec komentarza */
 .youtube-player iframe, .youtube-player div {
     width: 100%;
     height: 100%;
-    z-index: 100;
+    z-index: 8;
     background: transparent;
 }
 .youtube-player img {

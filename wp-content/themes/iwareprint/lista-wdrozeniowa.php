@@ -51,7 +51,9 @@
                                 <p style="font-size: 16px;line-height: 1.4;">
                                     <?= the_content();?>
                                 </p>
-                                <a style="color: #0099fe;" href="<?= get_permalink($post->ID) ?>" class="read-link">Czytaj więcej</a>
+                                <?php if (get_field('link_do_bazy_wiedzy') && !is_null(get_field('link_do_bazy_wiedzy'))): ?>
+                                    <a target="_blank" style="color: #0099fe;" href="<?= get_field('link_do_bazy_wiedzy') ?>" class="read-link">Czytaj więcej</a>
+                                <?php endif; ?>
                             </li>
 
                         <?php endwhile; ?>
@@ -186,7 +188,7 @@
                                 <li>
                                         <span class="subtopic-title">
                                         <em><?php echo get_the_date( 'Y-m-d' ); ?></em>
-                                            <h4 style="color: #333;padding: 0 0 10px;"><?= the_title(); ?></h4>
+                                            <h4 style="color: #333;padding: 0 0 10px;"><?= $post->post_title ?></h4>
                                             <?php
                                             $categories = get_the_category();
                                             if ( ! empty( $categories ) ) {
@@ -194,9 +196,11 @@
                                             }
                                             ?>
                                             <p style="font-size: 16px;line-height: 1.4;">
-                                                <?= the_content();?>
+                                                <?= $post->post_content?>
                                             </p>
-                                            <a style="color: #0099fe;" href="<?= get_permalink() ?>" class="read-link">Czytaj więcej</a>
+                                            <?php if (get_field('link_do_bazy_wiedzy') && !is_null(get_field('link_do_bazy_wiedzy'))): ?>
+                                                <a target="_blank" style="color: #0099fe;" href="<?= get_field('link_do_bazy_wiedzy') ?>" class="read-link">Czytaj więcej</a>
+                                            <?php endif; ?>
                                         </span>
                                 </li>
                             <?php endforeach; ?>

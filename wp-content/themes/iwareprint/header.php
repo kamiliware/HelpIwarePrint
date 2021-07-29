@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,900&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="icon" href="http://newhelp.iwareprint.pl/wp-content/uploads/fbrfg/favicon-32x32.png" type="image/png">
 	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138654119-2"></script>

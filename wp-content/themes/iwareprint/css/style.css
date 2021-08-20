@@ -71,7 +71,7 @@ p {
 
 }
 
-header {
+body > header {
     padding: 18px 20px;
 /*     height: 75px; */
     box-shadow: 0 1px 7px 0 #aaa;
@@ -86,11 +86,11 @@ header {
     height: 90px;
 }
 
-header img.logo{
+body > header img.logo{
     width: 160px;
 }
 
-header a img {
+body > header a img {
 /*     padding-top: 10px; */
 }
 
@@ -109,11 +109,11 @@ header a img {
 /*         height: 115px; */
     }
     
-    header img.logo{
+    body > header img.logo{
         width: 233px;
     }
     
-    header a img {
+    body > header a img {
 /*         padding-top: 20px; */
     }
 	
@@ -312,11 +312,8 @@ background: #fff;
 }
 .hamburger-menu-container {
   background:transparent;
-  display: none;
 }
-#toggle + #toggle-label {
-	display:none;
-}
+
 .hamburger-menu-container ul {
 	justify-content:center;
 }
@@ -2305,7 +2302,6 @@ Koniec komentarza */
 
 #load-more-posts {display: block; padding: 10px; box-shadow: 0 5px 5px 0 rgba(0,0,0,.1); font-size: 20px; text-align: center; margin: 20px 0; width: 100%;}
 #load-more-posts.blocked {color: gray!important; cursor: default}
-.hamburger-menu-container {display:block;}
 #toggle-label-sub:before {  display:none;}
 #toggle-sub {  display:none;}
 #toggle-sub ~ .hamburger-menu-container a {

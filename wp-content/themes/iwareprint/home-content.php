@@ -265,7 +265,7 @@
 			<?php endif; ?> 
             </div>
 
-            <a class="button" href="<?php echo esc_url(home_url('/blog')); ?>">Zobacz wszystkie</a>
+            <a class="button" href="<?php echo esc_url('https://blog.iwareprint.pl'); ?>">Zobacz wszystkie</a>
 
         </div>
         <script type="text/javascript" src="<?= get_template_directory_uri()?>/js/youtubeHandler.js"></script>

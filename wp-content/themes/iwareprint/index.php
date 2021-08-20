@@ -3,7 +3,7 @@
 <section id="blog" class="content">
 
     <div class="breadcrumbs">
-        <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <span><a href="<?php echo esc_url(home_url('/blog')); ?>">Blog</a></span>
+        <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <span><a href="<?php echo esc_url('https://blog.iwareprint.pl'); ?>">Blog</a></span>
     </div>
 
     <div class="container">

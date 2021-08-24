@@ -161,36 +161,14 @@ jQuery(document).ready(function($) {
             });
         }
 
-        $('#helpdesk-modules li').click(function () {
-            $(this).toggleClass('is-open');
-        });
-
-        $('#helpdesk-single li span').click(function () {
-            $(this).toggleClass('is-open');
-        });
-
-        $('#helpdesk-category li span').click(function () {
-            $(this).toggleClass('is-open');
-        });
-
-        $('#helpdesk-single li a').each(function () {
-            if ($(this).attr('href') === window.location.href) {
+        $('.hamburger-menu-container .accTrigger').on('click', function(e) {
+            e.stopImmediatePropagation();
+            if (!$(this).hasClass('active')) {
+                $(this).find('> ul').slideDown();
                 $(this).addClass('active');
+            } else {
+                $(this).find('> ul').slideUp();
+                $(this).removeClass('active');
             }
-
-        }).promise().done(function () {
-            $('.helpdesk-menu li.helpdesk-category').each(function () {
-                if ($(this).find('a.active').length > 0) {
-                    $(this).find('span').first().addClass('is-open');
-                }
-
-            });
-        });
-
-        $('#helpdesk-category li.helpdesk-category').each(function () {
-            if ($(this).find('span.active').length > 0) {
-                $(this).find('span').first().addClass('is-open');
-            }
-
-        });
+        })
 })

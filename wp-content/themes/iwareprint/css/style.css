@@ -1063,37 +1063,27 @@ footer .copy ul li{
 /*     box-shadow: 4px 4px 4px 0 #E7E7E7; */
 }
 
-.helpdesk-menu ul, .helpdesk-menu ul li.helpdesk-category a {
-    color: #180F4C;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.helpdesk-menu ul li.helpdesk-category a {
-    padding: 12px 0;
-}
-
-.helpdesk-menu ul li {
-    border-bottom: 1px solid #EEEEEE;
-    padding: 12px;
-}
-
-.helpdesk-menu ul li a {
-    font-weight: 300;
-    text-transform: none;
-    padding: 12px;
-}
-
-.helpdesk-menu ul li a:hover {
-/*     font-weight: 700; */
-    color: #0099FE;
-}
 
 .helpdesk-menu ul li ul {
     color: #180F4C;
     font-weight: 300;
     text-transform: none;
-    padding: 12px 0 10px;
+    padding: 12px 0 0;
+}
+.helpdesk-menu .withChildren li, .helpdesk-menu .noChildren li  {
+    padding: 0
+}
+.helpdesk-menu .hamburger-menu-container a {
+    padding: 0;
+}
+.helpdesk-menu .withChildren li a, .helpdesk-menu .noChildren li a {
+    display: block;
+    padding: 12px;
+    text-align: left;
+    font-weight: 400;
+}
+.helpdesk-menu .withChildren li a:hover {
+    color: #fff
 }
 
 .helpdesk-menu ul li:last-child {
@@ -1205,7 +1195,7 @@ footer .copy ul li{
 }
 
 /* Helpdesk - modules */
-#helpdesk-modules a.box-arrow-link img {
+#helpdesk-modules .box-arrow-link img {
     position: absolute;
     top: 10px;
     right: 20px;
@@ -1222,10 +1212,13 @@ footer .copy ul li{
 	background: #FFFFFF;
 	height: 250px;
 	padding: 20px;
-    box-shadow: 0 4px 0 0 #E7E7E7;
-    border-left: 1px solid #E7E7E7;
+    box-shadow: 0 12px 14px 0 rgba(0,0,0,.1);
     border-radius: 5px;
 	margin-left: 30px;
+    transition: ease all 150ms;
+}
+.module:hover {
+    box-shadow: none;
 }
 
 #helpdesk-modules .thumbnail .module-icon {
@@ -1236,6 +1229,7 @@ footer .copy ul li{
 	height: auto;
 }
 
+
 #helpdesk-modules h5 {
     font-size: 2.3rem;
     line-height: 2.8rem;
@@ -1244,6 +1238,7 @@ footer .copy ul li{
 	position: absolute;
     bottom: 20px;
     left: 20px;
+    right: 20px;
 }
 
 /* Helpdesk - category */
@@ -2207,28 +2202,17 @@ Koniec komentarza */
 .topic.is-open + .subtopic, .topic.is-open + .subtopic li.subtopic-active span:nth-of-type(2) {max-height:18000px;transition: max-height 2s ease-in-out;}
 .subtopic ul li span.subtopic-title {transition:1s;padding-bottom: 0;border-bottom: 1px solid #fff;margin-bottom: 0;}
 
-.helpdesk-category.cat-main {font-size:17px;padding-left:0;}
-#helpdesk-modules li, #helpdesk-single li, #helpdesk-category li {cursor:pointer;}
-#helpdesk-modules li.cat-main + ul, #helpdesk-modules li.cat-sub + ul, #helpdesk-single li.cat-main + ul, #helpdesk-single li.cat-sub + ul {max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);}
-#helpdesk-modules li.is-open + ul, #helpdesk-single li.is-open + ul {max-height:993000px;transition: max-height 2s ease-in-out;}
+.helpdesk-menu li {color: #180F4C;font-weight: 700;text-transform: uppercase; border-bottom:0;border-top:1px solid #eee; cursor: pointer; padding: 12px; font-size: 17px}
+.helpdesk-menu li:hover, .helpdesk-menu li.active {background: #f4f4f4}
+.helpdesk-menu .helpdesk-category a {text-transform:none;font-weight:300;color:#000;}
+.helpdesk-menu ul {padding:0;}
+.helpdesk-menu .helpdesk-category a:hover {color:#0099FE;}
+.helpdesk-menu .helpdesk-category a.active {color:#0099FE;}
 
-#helpdesk-single .helpdesk-menu ul li {color: #180F4C;font-weight: 700;text-transform: uppercase;padding:0;padding-top:12px;padding-left:12px;margin-top:12px;border-bottom:0;border-top:1px solid #eee;}
-#helpdesk-single .helpdesk-menu .cat-main {padding-left:0;}
-.helpdesk-menu ul li.helpdesk-category a {text-transform:none;font-weight:300;color:#000;}
-#helpdesk-single .helpdesk-menu ul {padding:0;}
-#helpdesk-single li.cat-main ul, #helpdesk-single li.cat-sub ul {max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);}
-#helpdesk-single li span.is-open + ul {max-height:993000px;transition: max-height 2s ease-in-out;}
-#helpdesk-single .helpdesk-menu ul li.helpdesk-category a:hover {color:#0099FE;}
-#helpdesk-single .helpdesk-menu ul li.helpdesk-category a.active {color:#0099FE;}
-
-#helpdesk-category .helpdesk-menu ul li {color: #180F4C;font-weight: 700;text-transform: uppercase;padding:0;padding-top:12px;padding-left:12px;margin-top:12px;border-bottom:0;border-top:1px solid #eee;}
-#helpdesk-category .helpdesk-menu .cat-main {padding-left:0;}
-#helpdesk-category .helpdesk-menu ul li.helpdesk-category a {text-transform:none;font-weight:300;color:#000;}
-#helpdesk-category .helpdesk-menu ul {padding:0;}
-#helpdesk-category li.cat-main ul, #helpdesk-single li.cat-sub ul {max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);}
-#helpdesk-category li span.is-open + ul {max-height:3000px;transition: max-height 2s ease-in-out;}
-#helpdesk-category .helpdesk-menu ul li.helpdesk-category a:hover {color:#0099FE;}
-#helpdesk-category .helpdesk-menu ul li.helpdesk-category a.active {color:#0099FE;}
+.helpdesk-menu .cat-sub {color: #f21559; font-weight: 700;}
+.helpdesk-menu .cat-sub:hover, .helpdesk-menu .cat-sub.active {color: #fff; background: #f21559}
+.helpdesk-menu .cat-sub li a {color: #fff}
+.helpdesk-menu .cat-sub li:hover {background: #c7194f}
 
 #list-months {background:#fff; padding: 70px 0 60px; box-shadow: 0 3px 23px 0 rgba(0,0,0,.1); position: relative}
 #list-months li, .list-top .new li {padding-left:190px;}
@@ -2304,9 +2288,6 @@ Koniec komentarza */
 #load-more-posts.blocked {color: gray!important; cursor: default}
 #toggle-label-sub:before {  display:none;}
 #toggle-sub {  display:none;}
-#toggle-sub ~ .hamburger-menu-container a {
-    color: #180F4C;
-}
 
 @media (max-width:768px) {
     .submenu {position:relative;}

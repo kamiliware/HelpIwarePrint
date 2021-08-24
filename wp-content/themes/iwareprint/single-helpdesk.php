@@ -14,155 +14,98 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 helpdesk-menu">
-					<div class="submenu">
-	
-<input id="toggle-sub" type="checkbox">
+                    <div class="submenu">
 
-<label for="toggle-sub" id="toggle-label-sub">
-	<span></span>
-	<span></span>
-	<span></span>
-</label>
-<div class="hamburger-menu-container">
-                    <ul>
-<?php
+                        <input id="toggle-sub" type="checkbox">
 
-					
-						
-$args=array(
-'child_of'                 => 0,
-'parent'                   => '',
-'hide_empty'               => 1,
-'hierarchical'             => 1,
-'exclude'                  => '',
-'include'                  => '',
-'number'                   => '',
-'taxonomy'                 => 'kategorie',
-'pad_counts'               => false
-);
-					
-						
-$categories=get_categories($args);
+                        <label for="toggle-sub" id="toggle-label-sub">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </label>
+                        <div class="hamburger-menu-container">
+                            <?php
+                            $termName = 'kategorie';
+                            $cat_terms = get_terms(
+                                $termName,
+                                array(
+                                    'hide_empty'    => false,
+                                    'orderby'       => 'name',
+                                    'order'         => 'ASC',
+                                    'parent' => 0
+                                )
+                            );
+                            if( $cat_terms ) :?>
+                                <ul>
+                                    <?php
+                                    foreach( $cat_terms as $term ) :
+                                        echo '<li class="helpdesk-category cat-main accTrigger">'. $term->name;
+                                        $term_children = get_term_children($term->term_id, 'kategorie');
+                                        if (!empty($term_children)): ?>
+                                            <ul style="display: none;">
+                                                <?php foreach ($term_children as $child):
+                                                    $subCat = get_term_by('id', $child, 'kategorie');
+                                                    $args = array(
+                                                        'post_status'           => 'publish',
+                                                        'orderby'               => 'menu_order',
+                                                        'order'               => 'ASC',
+                                                        'tax_query'             => array(
+                                                            array(
+                                                                'taxonomy' => 'kategorie',
+                                                                'terms'    => $child,
+                                                            ),
+                                                        ),
+                                                        'ignore_sticky_posts'   => true //caller_get_posts is deprecated since 3.1
+                                                    );
+                                                    $subCatPosts = new WP_Query( $args );
+                                                    if( $subCatPosts->have_posts() ) :?>
+                                                        <li class="helpdesk-category cat-sub accTrigger"><?= $subCat->name ?>
+                                                            <?php if( $subCatPosts->have_posts() ) : ?>
+                                                                <ul class="withChildren" style="display: none;">
+                                                                    <?php while( $subCatPosts->have_posts() ) : $subCatPosts->the_post();
 
-						
-foreach ( $categories as $category ) {
+                                                                        echo '<li><a href="' . get_permalink() . '">'. get_the_title() .'</a></li>';
 
-if ( $category->parent > 0 ) {
-continue;   
-}
+                                                                    endwhile; ?>
+                                                                </ul>
+                                                            <?php endif; ?>
+                                                        </li>
 
-echo '<li class="helpdesk-category cat-main"><span>' .	$category->name .'</span>';
+                                                    <?php endif;
+                                                endforeach; ?>
+                                            </ul>
+                                        <?php else:
+                                            $args = array(
+                                                'post_status'           => 'publish',
+                                                'orderby'               => 'menu_order',
+                                                'order'               => 'ASC',
+                                                'tax_query'             => array(
+                                                    array(
+                                                        'taxonomy' => 'kategorie',
+                                                        'terms'    => $term->term_id,
+                                                    ),
+                                                ),
+                                                'ignore_sticky_posts'   => true //caller_get_posts is deprecated since 3.1
+                                            );
+                                            $_posts = new WP_Query( $args );
+                                            if( $_posts->have_posts() ) : ?>
+                                                <ul class="noChildren" style="display: none;">
+                                                    <?php while( $_posts->have_posts() ) : $_posts->the_post();
 
-$querystr = "SELECT $wpdb->posts.*
-          FROM $wpdb->posts, $wpdb->term_relationships, $wpdb->terms
-          WHERE term_id = (" . $category->cat_ID . ")
-          AND term_taxonomy_id = (" . $category->term_taxonomy_id . ")
-          AND ID = object_id
-          AND post_type = 'helpdesk'
-          AND post_status = 'publish'
-          ORDER BY menu_order ASC";
-$posts = $wpdb->get_results($querystr, OBJECT);
-	
-	
+                                                        echo '<li><a href="' . get_permalink() . '">'. get_the_title() .'</a></li>';
 
-echo '<ul>';
-foreach ( $posts as $post ) {
-	
-    setup_postdata($post);  
+                                                    endwhile; ?>
+                                                </ul>
+                                            <?php endif;
+                                            echo '</li>';
+                                        endif;
+                                        wp_reset_postdata(); //important
+                                    endforeach; ?>
+                                </ul>
+                            <?php endif;?>
 
-        echo '<li><a href="'; the_permalink(); echo '">'; the_title();   echo '</a></li>';
-		
-
-        }
-
-
-$categories2 = get_terms('kategorie',array('parent' => $category->term_id , 'hide_empty'=> '0' ));
-
-	
-foreach ( $categories2 as $category ) {
-
-echo '<li class="helpdesk-category cat-sub"><span>' .	$category->name .'</span>';
-
-$args = [
-    'post_type' => 'helpdesk',
-    'tax_query' => [
-        [
-            'taxonomy' => 'kategorie',
-            'terms' => $category->term_id
-        ],
-    ],
-    // Rest of your arguments
-];
-	
-$posts = get_posts($args);
-
-echo '<ul>';
-$wq = new WP_Query($args);
-				
-					if ($wq->have_posts()) : 
-		while ($wq->have_posts()) : $wq->the_post();
-
-		
-        echo '<li><a href="'; the_permalink(); echo '">'; the_title();   echo '</a></li>';
-
-        endwhile; 
-					endif;
-echo '</ul>';
-	
-	
-
-}
-	echo '<ul>';
-	echo '</li>';
-	echo '</ul>';
-	echo '</ul>';
-	echo '</li>';
-}
-wp_reset_query();
-/*
-?>
-
-						<?php
-
-						$args = array(
-							'post_type' => 'helpdesk',
-							'tax_query' => array(
-								'terms' => 'kategorie'
-						  	),
-						);
-						
-						$loop = new WP_Query($args);
-
-						while($loop->have_posts()): $loop->the_post(); ?>
-						
-						<?php
-						
-						$terms = get_the_terms( $post->ID , 'kategorie' );
-						foreach ( $terms as $term ) {
-
-						$term_link = get_term_link( $term );
-
-						if ( is_wp_error( $term_link ) ) {
-							continue;
-						}?>
-							
-						<li class="helpdesk-category">
-							<a href="<?php echo esc_url( $term_link ) ?>"><?php echo $term->name; ?></a>
-						</li>
-						
-						<?php }
-						?>
-
-						<li><a href="<?php the_permalink();?>"><?php the_title();?></a></li>
-
-						<?php
-						endwhile;
-						wp_reset_query();
-						*/
-						?>
-
-                    </ul>    
-						</div></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-9 content helpdesk-content">
                     <img class="arrow-back" src="<?php echo get_template_directory_uri(); ?>/img/arrow_back.png" alt="arrow back">

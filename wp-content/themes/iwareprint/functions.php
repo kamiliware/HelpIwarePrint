@@ -98,8 +98,8 @@ function helpdesk_post_type() {
             'public'       => true,
             'supports'     => [ 'title', 'editor', 'page-attributes' ],
             'labels'       => [
-                'name' => 'Helpdesk',
-			'singular_name' => 'Help',
+                'name' => 'Nawigacja',
+			'singular_name' => 'Nawigacja',
             ],
             'show_in_rest' => true,
         ]

@@ -29,42 +29,76 @@
                             $cat_terms = get_terms(
                                 $termName,
                                 array(
-                                    'hide_empty'    => true,
+                                    'hide_empty'    => false,
                                     'orderby'       => 'name',
                                     'order'         => 'ASC',
                                     'parent' => 0
                                 )
                             );
-                            echo '<pre>';
-                            if( $cat_terms ) : var_dump($cat_terms);?>
-                                </pre>
+                            if( $cat_terms ) :?>
                                 <ul>
-                                    <?php foreach( $cat_terms as $term ) :
-                                        echo '<li class="helpdesk-category cat-main">'. $term->name;
+                                    <?php
+                                    foreach( $cat_terms as $term ) :
+                                        echo '<li class="helpdesk-category cat-main accTrigger">'. $term->name;
+                                        $term_children = get_term_children($term->term_id, 'kategorie');
+                                        if (!empty($term_children)): ?>
+                                            <ul style="display: none;">
+                                                <?php foreach ($term_children as $child):
+                                                    $subCat = get_term_by('id', $child, 'kategorie');
+                                                    $args = array(
+                                                        'post_status'           => 'publish',
+                                                        'orderby'               => 'menu_order',
+                                                        'order'               => 'ASC',
+                                                        'tax_query'             => array(
+                                                            array(
+                                                                'taxonomy' => 'kategorie',
+                                                                'terms'    => $child,
+                                                            ),
+                                                        ),
+                                                        'ignore_sticky_posts'   => true //caller_get_posts is deprecated since 3.1
+                                                    );
+                                                    $subCatPosts = new WP_Query( $args );
+                                                    if( $subCatPosts->have_posts() ) :?>
+                                                        <li class="helpdesk-category cat-sub accTrigger"><?= $subCat->name ?>
+                                                            <?php if( $subCatPosts->have_posts() ) : ?>
+                                                                <ul class="withChildren" style="display: none;">
+                                                                    <?php while( $subCatPosts->have_posts() ) : $subCatPosts->the_post();
 
-                                        $args = array(
-                                            'post_type'             => 'e_commerce_module',
-                                            'post_status'           => 'publish',
-                                            'tax_query'             => array(
-                                                array(
-                                                    'taxonomy' => 'kategorie',
-                                                    'terms'    => $term->term_id,
-                                                ),
-                                            ),
-                                            'ignore_sticky_posts'   => true //caller_get_posts is deprecated since 3.1
-                                        );
-                                        $_posts = new WP_Query( $args );
+                                                                        echo '<li><a href="' . get_permalink() . '">'. get_the_title() .'</a></li>';
 
-                                        if( $_posts->have_posts() ) : ?>
-                                            <ul style="display:none">
-                                                <?php while( $_posts->have_posts() ) : $_posts->the_post();
+                                                                    endwhile; ?>
+                                                                </ul>
+                                                            <?php endif; ?>
+                                                        </li>
 
-                                                    echo '<li><a href="' . get_permalink() . '">'. get_the_title() .'</a></li>';
-
-                                                endwhile; ?>
+                                                    <?php endif;
+                                                endforeach; ?>
                                             </ul>
-                                        <?php endif;
-                                        echo '</li>';
+                                        <?php else:
+                                            $args = array(
+                                                'post_status'           => 'publish',
+                                                'orderby'               => 'menu_order',
+                                                'order'               => 'ASC',
+                                                'tax_query'             => array(
+                                                    array(
+                                                        'taxonomy' => 'kategorie',
+                                                        'terms'    => $term->term_id,
+                                                    ),
+                                                ),
+                                                'ignore_sticky_posts'   => true //caller_get_posts is deprecated since 3.1
+                                            );
+                                            $_posts = new WP_Query( $args );
+                                            if( $_posts->have_posts() ) : ?>
+                                                <ul class="noChildren" style="display: none;">
+                                                    <?php while( $_posts->have_posts() ) : $_posts->the_post();
+
+                                                        echo '<li><a href="' . get_permalink() . '">'. get_the_title() .'</a></li>';
+
+                                                    endwhile; ?>
+                                                </ul>
+                                            <?php endif;
+                                            echo '</li>';
+                                        endif;
                                         wp_reset_postdata(); //important
                                     endforeach; ?>
                                 </ul>
@@ -79,73 +113,73 @@
                         <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <span><a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>">Baza wiedzy</a></span>
                     </div>
 
-<!--                    <div class="row modules">-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/modul-ecommerce.png" alt="e-commerce" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/e-commerce')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Moduł E-commerce</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/modul-podzlecanie.png" alt="podzlecanie" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/podzlecanie')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Moduł Podzlecanie</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/modul-produkcja.png" alt="produkcja" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/produkcja')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Moduł Produkcja</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/modul-handlowiec.png" alt="handlowiec" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/handlowiec')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Moduł Handlowiec</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/modul-reseller.png" alt="reseller" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/reseller')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Moduł Reseller Multidrukarnia</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/modul-preflight.png" alt="preflight" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/preflight')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Moduł Preflight</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/modul-kreator.png" alt="kreator" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/kreator-wydrukow')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Moduł Kreator</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-3 module">-->
-<!--                            <div class="thumbnail">-->
-<!--                                <img src="--><?php //echo get_template_directory_uri(); ?><!--/img/lista_wdrozeniowa.png" alt="lista" class="module-icon">-->
-<!--                                <a href="--><?php //echo esc_url(home_url('/baza-wiedzy/lw')); ?><!--" class="box-arrow-link"><img src="--><?php //echo get_template_directory_uri(); ?><!--/img/arrow.png" alt="link"></a>-->
-<!--                            </div>-->
-<!--                            <h5>Lista wdrożeniowa</h5>-->
-<!--                        </div>-->
-<!---->
-<!--                    </div>-->
+                    <div class="row modules">
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/e-commerce')); ?>" class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/modul-ecommerce.png" alt="e-commerce" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Moduł E-commerce</h5>
+                        </a>
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/podzlecanie')); ?>"  class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/modul-podzlecanie.png" alt="podzlecanie" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Moduł Podzlecanie</h5>
+                        </a>
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/produkcja')); ?>"  class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/modul-produkcja.png" alt="produkcja" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Moduł Produkcja</h5>
+                        </a>
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/handlowiec')); ?>"  class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/modul-handlowiec.png" alt="handlowiec" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Moduł Handlowiec</h5>
+                        </a>
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/reseller')); ?>" class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/modul-reseller.png" alt="reseller" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Moduł Reseller Multidrukarnia</h5>
+                        </a>
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/preflight')); ?>" class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/modul-preflight.png" alt="preflight" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Moduł Preflight</h5>
+                        </a>
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/kreator-wydrukow')); ?>" class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/modul-kreator.png" alt="kreator" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Moduł Kreator</h5>
+                        </a>
+
+                        <a href="<?php echo esc_url(home_url('/baza-wiedzy/lw')); ?>" class="col-md-3 module">
+                            <div class="thumbnail">
+                                <img src="<?php echo get_template_directory_uri(); ?>/img/lista_wdrozeniowa.png" alt="lista" class="module-icon">
+                                <span class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></span>
+                            </div>
+                            <h5>Lista wdrożeniowa</h5>
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>

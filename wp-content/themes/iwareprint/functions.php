@@ -91,7 +91,7 @@ function helpdesk_post_type() {
             'rewrite'      => [
                 'with_front' => false,
 				'has-archive' => false,
-				'slug'       => 'baza-wiedzy',
+				'slug'       => 'nawigacja',
             ],
 			 'has-archive' => false,
             'hierarchical' => true,
@@ -108,7 +108,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/lw',
+            'slug'       => 'lw',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -124,7 +124,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/e-commerce',
+            'slug'       => 'e-commerce',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -140,7 +140,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/handlowiec',
+            'slug'       => 'handlowiec',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -156,7 +156,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/kreator-wydrukow',
+            'slug'       => 'kreator-wydrukow',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -172,7 +172,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/produkcja',
+            'slug'       => 'produkcja',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -188,7 +188,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/reseller',
+            'slug'       => 'reseller',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -204,7 +204,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/preflight',
+            'slug'       => 'preflight',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -220,7 +220,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'baza-wiedzy/podzlecanie',
+            'slug'       => 'podzlecanie',
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -267,7 +267,7 @@ add_action( 'init', function () {
 //        }
 //    }
 //}
-add_action( 'parse_request', 'wpse_358157_parse_request' );
+//add_action( 'parse_request', 'wpse_358157_parse_request' );
 
 // Video post type
 function tutorials_post_type() {

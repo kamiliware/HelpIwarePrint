@@ -1,10 +1,12 @@
 <?php
 /*
 	Template Name: Single - helpdesk
+    Template Post Type: helpdesk, implementation_list, e_commerce_module, trader, wizard, production, reseller, preflight, podzlecanie
 */
 ?>
 
 <?php get_header(); ?>
+
 
 	<?php the_post(); ?>
 

@@ -2214,7 +2214,7 @@ Koniec komentarza */
 
 #helpdesk-single .helpdesk-menu ul li {color: #180F4C;font-weight: 700;text-transform: uppercase;padding:0;padding-top:12px;padding-left:12px;margin-top:12px;border-bottom:0;border-top:1px solid #eee;}
 #helpdesk-single .helpdesk-menu .cat-main {padding-left:0;}
-#helpdesk-single .helpdesk-menu ul li.helpdesk-category a {text-transform:none;font-weight:300;color:#000;}
+.helpdesk-menu ul li.helpdesk-category a {text-transform:none;font-weight:300;color:#000;}
 #helpdesk-single .helpdesk-menu ul {padding:0;}
 #helpdesk-single li.cat-main ul, #helpdesk-single li.cat-sub ul {max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);}
 #helpdesk-single li span.is-open + ul {max-height:993000px;transition: max-height 2s ease-in-out;}

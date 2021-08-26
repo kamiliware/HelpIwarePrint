@@ -134,21 +134,11 @@
 
 
 						$terms = get_the_terms( $post->ID , 'kategorie' );
-						foreach ( $terms as $term ) {
-
-						$term_link = get_term_link( $term );
-
-						if ( is_wp_error( $term_link ) ) {
-							continue;
-						}?>
+						foreach ( $terms as $term ):?>
 						
-						<a href="<?php echo esc_url( $term_link ) ?>"><?php echo $term->name; ?></a>
+						<a href="<?php echo esc_url( home_url("/baza-wiedzy/$term->slug") ) ?>"><?php echo $term->name; ?></a>
 						
-						<?php }
-						
-						
-						
-						?>
+						<?php endforeach;?>
 						
 						
 						<?php
@@ -157,11 +147,11 @@ $parent = ( isset( $term->parent ) ) ? get_term_by( 'id', $term->parent, 'katego
 ?>
 
 <?php if( $parent ): ?>
-     <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/<?php echo $parent->slug; ?>"><?php echo $parent->name; ?></a>  / zaza
+     <a href='<?php echo esc_url(home_url("/baza-wiedzy/$parent->slug")); ?>'</a>
     
 						
 <?php else:?>
-   <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/<?php echo $parent->slug; ?>"><?php echo $parent->name; ?></a>
+    <a href='<?php echo esc_url(home_url("/baza-wiedzy/$parent->slug")); ?>'</a>
 <?php endif; ?>
 						
 						

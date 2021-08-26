@@ -4,7 +4,10 @@
 */
 ?>
 
-<?php get_header(); ?>
+<?php get_header();
+    wp_head();
+    ?>
+
 
 	<?php the_post(); ?>
 	<section id="helpdesk-category" class="hcat">
@@ -42,7 +45,7 @@
                                             <ul style="display: none;">
                                                 <?php foreach ($term_children as $child):
                                                     $subCat = get_term_by('id', $child, 'kategorie');
-                                                    $args = array(
+                                                    $subArgs = array(
                                                         'post_status'           => 'publish',
                                                         'orderby'               => 'menu_order',
                                                         'order'               => 'ASC',
@@ -54,7 +57,7 @@
                                                         ),
                                                         'ignore_sticky_posts'   => true //caller_get_posts is deprecated since 3.1
                                                     );
-                                                    $subCatPosts = new WP_Query( $args );
+                                                    $subCatPosts = new WP_Query( $subArgs );
                                                     if( $subCatPosts->have_posts() ) :?>
                                                         <li class="helpdesk-category cat-sub accTrigger"><?= $subCat->name ?>
                                                             <?php if( $subCatPosts->have_posts() ) : ?>
@@ -123,45 +126,32 @@
 
 						$term_link = get_term_link( $term );
 						$tid = $term->term_id;
-						if ( is_wp_error( $term_link ) ) {
+						if ( is_wp_error( $term_link ) ):
 							continue;
-						}
-						
-							
-							
-							
-							
-							
-				
-							
-							
-						?>
-						
-						
-						<?php
+						endif;
                             $term = get_queried_object();
                             $parent = ( isset( $term->parent ) ) ? get_term_by( 'id', $term->parent, 'kategorie' ) : false;
                             ?>
 
 <?php if( $parent ): ?>
-     <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/<?php echo $parent->slug; ?>"><?php echo $parent->name; ?></a>  / 
-    
+     <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/<?php echo $parent->slug; ?>"><?php echo $parent->name; ?></a>  /
+
 <?php else:?>
-   
+
 <?php endif; ?>
-						
-						
-						
+
+
+
 						<span><?php
 							$case_study_cat_slug = get_queried_object()->slug;
 							$case_study_cat_namex = $term->name;
                 $case_study_cat_name = get_queried_object()->name;
 							$case_study_id = get_queried_object_id();
-					
+
 							echo $case_study_cat_name;
-							
-							
-							
+
+
+
 							?></span>
 						
 						
@@ -170,43 +160,43 @@
 
                     </div>
 					<?php
-					
+
             ?>
                 <h1><?php echo $case_study_cat_name; ?></h1>
 					
 					
 					<?php
-					
-					
+
+
 					if(($case_study_cat_slug=='e-commerce')OR($case_study_cat_slug=='kreator-wydrukow')){
-						
-						
+
+
 											foreach ( $parent_terms as $pterm ) {
     //Get the Child terms
     //
-    $terms = get_terms( $taxonomyName, array( 'parent' => $pterm->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
+    $childTerms = get_terms( $taxonomyName, array( 'parent' => $pterm->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
 												$xy_id = $pterm->term_id;
 												if($xy_id==$case_study_id){
-    foreach ( $terms as $term ) { ?>
+    foreach ( $childTerms as $term ) { ?>
 		<div class="category-single">
-						
+
 						<div class="thumbnail">
-							<h5><?php echo $term->name; ?></h5>
-							<a href="<?php echo get_term_link( $term ) ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
+							<h5><?= $term->name; ?></h5>
+							<a href="<?= esc_url(home_url("/baza-wiedzy/$term->slug"));  ?>" class="box-arrow-link"><img src="<?= get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
 						</div>
-						
+
 					</div>
 
 					<?php
-          
+
     }
 												}
 }
-						
-						
-						
-						
-						
+
+
+
+
+
 					}else{
 						$args = [
     'post_type' => 'helpdesk',
@@ -220,37 +210,36 @@
 ];
 					$wq = new WP_Query($args);
 					?>
-					<?php if ($wq->have_posts()) : ?>    
+					<?php if ($wq->have_posts()) : ?>
 					<?php while ($wq->have_posts()) : $wq->the_post(); ?>
 
 					<div class="category-single">
-						
 						<div class="thumbnail">
-							<h5><?php the_title(); ?>wew</h5>
-							<a href="<?php the_permalink(); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
+							<h5><?php the_title(); ?></h5>
+							<a href="<?php the_permalink(); ?>" class="box-arrow-link"><img src="<?= get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
 						</div>
-						
+
 					</div>
 
-					<?php endwhile; ?>  
+					<?php endwhile; ?>
 					<?php else: ?>
 
 					<h4>Nie ma żadnych postów.</h4>
 
 					<?php endif;
-						
-						
-						
-						
-						
-						
-						
 
-						}						
-					
-					
-					
-	
+
+
+
+
+
+
+
+						}
+
+
+
+
 					?>
 					
 					

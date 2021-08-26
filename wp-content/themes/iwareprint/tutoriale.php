@@ -1,7 +1,9 @@
 <?php /* Template Name: Tutoriale */ ?>
 
 <?php get_header(); ?>
-
+<?php
+global $post;
+$lang = pll_get_post_language($post->ID); ?>
 <section id="tutorials" class="content">
 
     <div class="breadcrumbs">
@@ -11,7 +13,7 @@
     <div class="container">
 
         <h4>Materiały wideo</h4>
-        <h1>Obejrzyj nasze wskazówki</h1>
+        <h1><?= pll_translate_string('Obejrzyj nasze wskazówki', $lang) ?></h1>
         <span class="line"></span>
  <?php
 		$counter = 0;
@@ -63,7 +65,7 @@
         </div>
         <div id="morePostsWrapper"></div>
         <div class="button">
-            <a href="#" id="load-more-posts">Wczytaj więcej</a>
+            <a href="#" id="load-more-posts"><?= pll_translate_string('Wczytaj więcej', $lang) ?></a>
         </div>
 <!--		<div class="button">-->
 <!--                    <a href="#" id="load-more-posts"><img  src="--><?//= get_template_directory_uri()?><!--/img/load.png" /></a>-->

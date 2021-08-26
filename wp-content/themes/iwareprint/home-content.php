@@ -13,37 +13,40 @@
                
                 <div class="col-lg-4 helpdesk-box">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_helpdesk.png" alt="helpdesk">
-                    <h1>Baza wiedzy</h1>
-                    <p>Nawigacja po systemie. Instrukcje techniczne</p>
+                    <?php
+                    global $post;
+                    $lang = pll_get_post_language($post->ID); ?>
+                    <h1><?= pll_translate_string('Baza wiedzy', $lang) ?></h1>
+                    <p><?= pll_translate_string('Nawigacja po systemie. Instrukcje techniczne', $lang) ?></p>
                     <div class="d-md-none box-arrow">
-                        <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
+                        <a href="<?php echo esc_url(pll_translate_string('/baza-wiedzy', $lang)); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
                     </div>
                     <div class="d-none d-md-inline-block">
-                        <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>" class="box-link">Przejdź</a>
+                        <a href="<?php echo esc_url(home_url(pll_translate_string('/baza-wiedzy', $lang))); ?>" class="box-link"><?= pll_translate_string('Przejdź', $lang) ?></a>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 faq-box">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_faq.png" alt="faq">
                     <h2>FAQ</h2>
-                    <p>Na każde pytanie jest odpowiedź</p>
+                    <p><?= pll_translate_string('Na każde pytanie jest odpowiedź', $lang) ?></p>
                     <div class="d-md-none box-arrow">
                         <a href="<?php echo esc_url(home_url('/faq')); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
                     </div>
                     <div class="d-none d-md-inline-block">
-                        <a href="<?php echo esc_url(home_url('/faq')); ?>" class="box-link">Przejdź</a>
+                        <a href="<?php echo esc_url(home_url('/faq')); ?>" class="box-link"><?= pll_translate_string('Przejdź', $lang) ?></a>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 download-box">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_download.png" alt="download">
-                    <h2>Materiały do pobrania</h2>
-                    <p>Baza materiałów iwarePRINT</p>
+                    <h2><?= pll_translate_string('Materiały do pobrania', $lang) ?></h2>
+                    <p><?= pll_translate_string('Baza materiałów iwarePRINT', $lang) ?></p>
                     <div class="d-md-none box-arrow">
-                        <a href="<?php echo esc_url(home_url('/do-pobrania')); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
+                        <a href="<?php echo esc_url(home_url(pll_translate_string('/do-pobrania', $lang))); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
                     </div>
                     <div class="d-none d-md-inline-block">
-                        <a href="<?php echo esc_url(home_url('/do-pobrania')); ?>" class="box-link">Przejdź</a>
+                        <a href="<?php echo esc_url(home_url(pll_translate_string('/do-pobrania', $lang))); ?>" class="box-link"><?= pll_translate_string('Przejdź', $lang) ?></a>
                     </div>
                 </div>
                 
@@ -60,33 +63,33 @@
                 <div class="col-md-3 webinars">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_webinars.png" alt="webinars">
                     <span class="line"></span>
-                    <h2>Najbliższe webinaria</h2>
+                    <h2><?= pll_translate_string('Najbliższe webinaria', $lang) ?></h2>
                     <p><?php the_field('webinaria', 'option'); ?></p>
-                    <a target="_blank" href="http://webinaria.iwareprint.pl/">Zapisz się</a>
+                    <a target="_blank" href="<?= pll_translate_string('http://webinaria.iwareprint.pl/', $lang) ?>"><?= pll_translate_string('Zapisz się', $lang) ?></a>
                 </div>
 
                 <div class="col-md-3 outsourcing">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_outsourcing.png" alt="outsourcing">
                     <span class="line"></span>
                     <h2>Dropshipping<br>Outsourcing</h2>
-                    <p>Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.</p>
-                    <a target="_blank" href="http://podzlecdruk.pl/">Przejdź</a>
+                    <p><?= pll_translate_string('Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.', $lang) ?></p>
+                    <a target="_blank" href="<?= pll_translate_string('http://podzlecdruk.pl/', $lang) ?>"><?= pll_translate_string('Przejdź', $lang) ?></a>
                 </div>
 				
 				<div class="col-md-3 creator">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_creator.png" alt="creator">
                     <span class="line"></span>
-                    <h2>Kreator wydruków</h2>
-                    <p>Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.</p>
-                    <a target="_blank" href="http://kreatorwydrukow.pl/">Przejdź</a>
+                    <h2><?= pll_translate_string('Kreator wydruków', $lang) ?></h2>
+                    <p><?= pll_translate_string('Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.', $lang) ?></p>
+                    <a target="_blank" href="<?= pll_translate_string('http://kreatorwydrukow.pl/', $lang) ?>"><?= pll_translate_string('Przejdź', $lang) ?></a>
                 </div>
 
                 <div class="col-md-3 conference">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_conference.png" alt="conference">
                     <span class="line"></span>
-                    <h2>Najbliższa konferencja</h2>
+                    <h2><?= pll_translate_string('Najbliższa konferencja', $lang) ?></h2>
                     <p><?php the_field('konferencje', 'option'); ?></p>
-                    <a target="_blank" href="http://konferencja.podzlecdruk.pl/">Dołącz</a>
+                    <a target="_blank" href="<?= pll_translate_string('http://konferencja.podzlecdruk.pl/', $lang) ?>"><?= pll_translate_string('Dołącz', $lang) ?></a>
                 </div>
 
             </div>
@@ -101,7 +104,7 @@
 
                 <div class="col-md-8 list">
                     <div class="container">
-                        <h3>Aktualizacje</h3>
+                        <h3><?= pll_translate_string('Aktualizacje', $lang) ?></h3>
                         <ul>
 							<?php
 				
@@ -130,22 +133,22 @@
                                 <?= the_content();?>
                             </p>
                             <?php if (get_field('link_do_bazy_wiedzy') && !is_null(get_field('link_do_bazy_wiedzy'))): ?>
-                                <a target="_blank" style="color: #0099fe;" href="<?= get_field('link_do_bazy_wiedzy') ?>" class="read-link">Czytaj więcej</a>
+                                <a target="_blank" style="color: #0099fe;" href="<?= get_field('link_do_bazy_wiedzy') ?>" class="read-link"><?= pll_translate_string('Czytaj więcej', $lang) ?></a>
                             <?php endif; ?>
                         </li>
 						
 						<?php endwhile; ?>
 
                         </ul>
-                        <a class="d-lg-none button" href="<?php echo esc_url(home_url('/aktualizacje')); ?>">Pełna lista</a>
-                        <a class="d-none d-lg-inline-block button" href="<?php echo esc_url(home_url('/aktualizacje')); ?>">Zobacz pełną listę</a>
+                        <a class="d-lg-none button" href="<?php echo esc_url(home_url(pll_translate_string('/aktualizacje', $lang))); ?>"><?= pll_translate_string('Pełna lista', $lang) ?></a>
+                        <a class="d-none d-lg-inline-block button" href="<?php echo esc_url(home_url(pll_translate_string('/aktualizacje', $lang))); ?>"><?= pll_translate_string('Zobacz pełną listę', $lang) ?></a>
                     </div>
                 </div>
 
                 <div class="col-md-4 download-home">
                     <div class="container">
-                        <h3>Materiały<br>do pobrania</h3>
-                        <a class="button" href="<?php echo esc_url(home_url('/do-pobrania')); ?>">Zobacz</a>
+                        <h3><?= pll_translate_string('Materiały<br>do pobrania', $lang) ?></h3>
+                        <a class="button" href="<?php echo esc_url(home_url('/do-pobrania')); ?>"><?= pll_translate_string('Zobacz', $lang) ?></a>
                         <img src="<?php echo get_template_directory_uri(); ?>/img/tablet.png" alt="tablet">
                     </div>
                 </div>
@@ -159,8 +162,8 @@
         
         <div class="container">
            
-            <h4>Materiały wideo</h4>
-            <h3>Mamy dla Ciebie sporo wiedzy!</h3>
+            <h4><?= pll_translate_string('Materiały wideo', $lang) ?></h4>
+            <h3><?= pll_translate_string('Mamy dla Ciebie sporo wiedzy!', $lang) ?></h3>
             <span class="line"></span>
             
             <div class="row">
@@ -191,7 +194,7 @@
                 
             </div>
             
-            <a class="button" href="<?php echo esc_url(home_url('/materialy-wideo')); ?>">Zobacz wszystkie</a>
+            <a class="button" href="<?php echo esc_url(home_url(pll_translate_string('/materialy-wideo', $lang))); ?>"><?= pll_translate_string('Zobacz wszystkie', $lang) ?></a>
             
         </div>
 
@@ -201,7 +204,7 @@
 
         <div class="container">
 
-            <h3>Blog IwarePrint</h3>
+            <h3><?= pll_translate_string('Blog IwarePrint', $lang) ?></h3>
 
             <div class="row">
 
@@ -226,7 +229,7 @@
                 <div class="post-big-content">
                     <h4><?php the_title(); ?></h4>
                     <p><?php the_excerpt(); ?></p>
-                    <a href="<?php the_permalink(); ?>">Zobacz</a>
+                    <a href="<?php the_permalink(); ?>"><?= pll_translate_string('Zobacz', $lang) ?></a>
                 </div>
             </div>
  
@@ -260,12 +263,12 @@
 			
 			<?php else: ?>
 
-			<h4>Nie ma żadnych postów.</h4>
+			<h4><?= pll_translate_string('Nie ma żadnych postów.', $lang) ?></h4>
 
 			<?php endif; ?> 
             </div>
 
-            <a class="button" href="<?php echo esc_url('https://blog.iwareprint.pl'); ?>">Zobacz wszystkie</a>
+            <a class="button" href="<?php echo esc_url(pll_translate_string('https://blog.iwareprint.pl', $lang)); ?>"><?= pll_translate_string('Zobacz wszystkie', $lang) ?></a>
 
         </div>
         <script type="text/javascript" src="<?= get_template_directory_uri()?>/js/youtubeHandler.js"></script>

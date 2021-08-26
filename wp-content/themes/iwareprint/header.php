@@ -87,7 +87,7 @@
 					  <span></span>
 					  <span></span>
 					  </label>
-					  <div class="hamburger-menu-container">    
+					  <div class="hamburger-menu-container mobile-menu">
 						  <ul>
 							<?php
 							   wp_nav_menu([

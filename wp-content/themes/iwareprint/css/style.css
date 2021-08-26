@@ -301,6 +301,7 @@ background: #fff;
     font-size: 20px;
     font-family: 'DharmaGothic_Light';
 } */
+.mobile-menu {display: none}
 #toggle:checked ~ .hamburger-menu-container {
   height: 110%;
   display: block;

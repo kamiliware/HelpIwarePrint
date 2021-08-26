@@ -368,5 +368,43 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
+//TŁUMACZENIE
+
+add_action('init', function() {
+    pll_register_string('baza-wiedzy', 'Baza wiedzy');
+    pll_register_string('nawigacja-po-systemie', 'Nawigacja po systemie. Instrukcje techniczne');
+    pll_register_string('every-question', 'Na każde pytanie jest odpowiedź');
+    pll_register_string('materials', 'Materiały do pobrania');
+    pll_register_string('materials-base', 'Baza materiałów iwarePRINT');
+    pll_register_string('go', 'Przejdź');
+    pll_register_string('baza-wiedzy-url', '/baza-wiedzy');
+    pll_register_string('do-pobrania-url', '/do-pobrania');
+    pll_register_string('upcoming-webinars', 'Najbliższe webinaria');
+    pll_register_string('webinaria-page-url', 'http://webinaria.iwareprint.pl/');
+    pll_register_string('sign-up', 'Zapisz się');
+    pll_register_string('strona-dedykowana-modulowi-podzlecania', 'Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.');
+    pll_register_string('podzlec-druk-url', 'http://podzlecdruk.pl/');
+    pll_register_string('print-wizard', 'Kreator wydruków');
+    pll_register_string('strona-dedykowana-modulowi-kreator', 'Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.');
+    pll_register_string('upcoming-conference', 'Najbliższa konferencja');
+    pll_register_string('konferencja-url', 'http://konferencja.podzlecdruk.pl/');
+    pll_register_string('news','Aktualizacje');
+    pll_register_string('read-more','Czytaj więcej');
+    pll_register_string('updates-url', '/aktualizacje');
+    pll_register_string('full-list', 'Pełna lista');
+    pll_register_string('see-full-list', 'Zobacz pełną listę');
+    pll_register_string('materials-with-break', 'Materiały<br>do pobrania');
+    pll_register_string('see', 'Zobacz');
+    pll_register_string('video-tutorials', 'Materiały wideo');
+    pll_register_string('lok', 'Mamy dla Ciebie sporo wiedzy!');
+    pll_register_string('tutorials-url', '/materialy-wideo');
+    pll_register_string('see-all', 'Zobacz wszystkie');
+    pll_register_string('ip-blog', 'Blog IwarePrint');
+    pll_register_string('no-posts', 'Nie ma żadnych postów.');
+    pll_register_string('blog-url', 'https://blog.iwareprint.pl');
+    pll_register_string('load-more', 'Wczytaj więcej');
+    pll_register_string('watch-tips', 'Obejrzyj nasze wskazówki');
+
+});
 
 ?>

@@ -191,7 +191,7 @@ window.onscroll = function() {
 
 </script>
    
-	<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js"></script>
     
     <?php wp_footer(); ?>
 

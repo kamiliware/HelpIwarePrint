@@ -226,7 +226,7 @@
 					<div class="category-single">
 						
 						<div class="thumbnail">
-							<h5><?php the_title(); ?></h5>
+							<h5><?php the_title(); ?>wew</h5>
 							<a href="<?php the_permalink(); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
 						</div>
 						

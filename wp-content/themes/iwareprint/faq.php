@@ -5,7 +5,12 @@
 ?>
 
 <?php get_header(); ?>
-
+    <?php
+    global $post;
+    if ( function_exists( 'pll_get_post_language' ) ):
+        $lang = pll_get_post_language($post->ID);
+    endif;
+    ?>
 	<section id="faq" class="content accordion">
         
         <div class="breadcrumbs">
@@ -15,7 +20,7 @@
         <div class="container">
 
             <h4 class="blue-header">FAQ</h4>
-            <h1>Wszystko o co chcesz zapytać</h1>
+            <h1><?= pl_t('Wszystko o co chcesz zapytać', $lang) ?></h1>
             <span class="line"></span>
 
             <div class="faq">

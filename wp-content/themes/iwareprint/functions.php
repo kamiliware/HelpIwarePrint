@@ -13,6 +13,7 @@ require_once('bs4navwalker.php');
 
 // Register WordPress nav menu
 register_nav_menu('top', 'Top menu');
+register_nav_menu('top-english', 'Top menu - English');
 
 // This theme uses post thumbnails
 add_theme_support( 'post-thumbnails' );
@@ -433,26 +434,15 @@ function pl__(string $string = '' ): string
 function pl_t(string $string = '', $lang = ''): string
 {
     if ( function_exists( 'pll_translate_string' ) ) {
-        return pll_translate_string( $string );
+        return pll_translate_string( $string , $lang);
     }
 
     return $string;
 }
 
-/**
- * Returns translated string if polylang exists or  output's not translated one as a fallback
- *
- * @param integer $int
- *
- * @return integer
- */
-function pl_g_p_l(int $int): int
-{
-    if ( function_exists( 'pll_get_post_language' ) ) {
-        return pll_get_post_language( $int );
-    }
-
-    return $int;
+if ( function_exists( 'pll_get_post_language' ) ) {
+    $post_id = 0;
+    return pll_get_post_language($post_id);
 }
 
 // these function prefixes can be either you are comfortable with.

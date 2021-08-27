@@ -60,24 +60,54 @@
                 <div class="d-none d-lg-block col-lg-8">
                    
                     <ul class="nav a-menu">
-                       
                         <?php
-						   wp_nav_menu([
-							 'menu'            => 'top',
-							 'theme_location'  => 'top',
-							 'container'       => 'div',
-							 'container_id'    => 'bs4navbar',
-							 'container_class' => '',
-							 'menu_id'         => false,
-							 'menu_class'      => 'nav',
-							 'depth'           => 2,
-							 'fallback_cb'     => 'bs4navwalker::fallback',
-							 'walker'          => new bs4navwalker()
-						   ]);
-						?>
-                        
+                        global $post;
+                        if ( function_exists( 'pll_get_post_language' ) ):
+                            $lang = pll_get_post_language($post->ID);
+                        endif;
+                        ?>
+                        <?php
+                        if (isset($lang)):
+                            if ($lang == 'pl'):
+                                wp_nav_menu([
+                                    'menu'            => 'top',
+                                    'theme_location'  => 'top',
+                                    'container'       => 'div',
+                                    'container_id'    => 'bs4navbar',
+                                    'container_class' => '',
+                                    'menu_id'         => false,
+                                    'menu_class'      => 'nav',
+                                    'depth'           => 2,
+                                    'fallback_cb'     => 'bs4navwalker::fallback',
+                                    'walker'          => new bs4navwalker(),
+                                ]);
+                                var_dump(pll_the_languages([
+                                    "dropdown" => 1,
+                                    "raw" => 1,
+                                    "post_id" => 1
+                                ]));
+                            elseif ($lang == 'en'):
+                                wp_nav_menu([
+                                    'menu'            => 'top-english',
+                                    'theme_location'  => 'top-english',
+                                    'container'       => 'div',
+                                    'container_id'    => 'bs4navbar',
+                                    'container_class' => '',
+                                    'menu_id'         => false,
+                                    'menu_class'      => 'nav',
+                                    'depth'           => 2,
+                                    'fallback_cb'     => 'bs4navwalker::fallback',
+                                    'walker'          => new bs4navwalker(),
+                                ]);
+                                var_dump(pll_the_languages([
+                                    "dropdown" => 1,
+                                    "raw" => 1,
+                                    "post_id" => 1
+                                ]));
+                            endif;
+                        endif;
+                            ?>
                     </ul>
-                
                 </div>
 
                 <div class="col-3 d-lg-none text-right">

@@ -147,17 +147,17 @@ $parent = ( isset( $term->parent ) ) ? get_term_by( 'id', $term->parent, 'katego
 ?>
 
 <?php if( $parent ): ?>
-     <a href='<?php echo esc_url(home_url("/baza-wiedzy/$parent->slug")); ?>'</a>
+     <a href='<?php echo esc_url(home_url("/baza-wiedzy/$parent->slug")); ?>'></a>
     
 						
 <?php else:?>
-    <a href='<?php echo esc_url(home_url("/baza-wiedzy/$parent->slug")); ?>'</a>
+    <a href='<?php echo esc_url(home_url("/baza-wiedzy/$parent->slug")); ?>'></a>
 <?php endif; ?>
 						
 						
 						
 						
-						/  <span><a href="<?php the_permalink();?>"><?php the_title();?></a></span>
+						/  <span><?php the_title();?></span>
                     </div>
 					<div class="row helpdesk-header">
 						

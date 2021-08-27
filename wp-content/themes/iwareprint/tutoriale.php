@@ -3,16 +3,18 @@
 <?php get_header(); ?>
 <?php
 global $post;
-$lang = pl_g_p_l($post->ID); ?>
+if ( function_exists( 'pll_get_post_language' ) ):
+    $lang = pll_get_post_language($post->ID);
+endif; ?>
 <section id="tutorials" class="content">
 
     <div class="breadcrumbs">
-        <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <span><a href="<?php echo esc_url(home_url('/materialy-wideo')); ?>">Materiały wideo</a></span>
+        <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <span><a href="<?php echo esc_url(home_url(pl_t('/materialy-wideo', $lang))); ?>"><?= pl_t('Materiały wideo', $lang) ?></a></span>
     </div>
 
     <div class="container">
 
-        <h4>Materiały wideo</h4>
+        <h4><?= pl_t('Materiały wideo', $lang) ?></h4>
         <h1><?= pl_t('Obejrzyj nasze wskazówki', $lang) ?></h1>
         <span class="line"></span>
  <?php

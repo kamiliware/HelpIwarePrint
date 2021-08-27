@@ -15,7 +15,10 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_helpdesk.png" alt="helpdesk">
                     <?php
                     global $post;
-                    $lang = pl_g_p_l($post->ID); ?>
+                    if ( function_exists( 'pll_get_post_language' ) ):
+                        $lang = pll_get_post_language($post->ID);
+                    endif;
+                    ?>
                     <h1><?= pl_t('Baza wiedzy', $lang) ?></h1>
                     <p><?= pl_t('Nawigacja po systemie. Instrukcje techniczne', $lang) ?></p>
                     <div class="d-md-none box-arrow">

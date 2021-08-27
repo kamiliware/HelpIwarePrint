@@ -131,21 +131,19 @@
 						endif;
                             $term = get_queried_object();
                             $parent = ( isset( $term->parent ) ) ? get_term_by( 'id', $term->parent, 'kategorie' ) : false;
-                            ?>
+                            if( $parent ): ?>
+                                 <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/<?php echo $parent->slug; ?>"><?php echo $parent->name; ?></a>  /
 
-<?php if( $parent ): ?>
-     <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/<?php echo $parent->slug; ?>"><?php echo $parent->name; ?></a>  /
+                            <?php else:?>
 
-<?php else:?>
-
-<?php endif; ?>
+                            <?php endif; ?>
 
 
 
 						<span><?php
 							$case_study_cat_slug = get_queried_object()->slug;
 							$case_study_cat_namex = $term->name;
-                $case_study_cat_name = get_queried_object()->name;
+                            $case_study_cat_name = get_queried_object()->name;
 							$case_study_id = get_queried_object_id();
 
 							echo $case_study_cat_name;
@@ -199,13 +197,12 @@
 
 					}else{
 						$args = [
-    'post_type' => 'helpdesk',
-    'tax_query' => [
-        [
-            'taxonomy' => 'kategorie',
-            'terms' => $tid
-        ],
-    ],
+                        'tax_query' => [
+                            [
+                                'taxonomy' => 'kategorie',
+                                'terms' => $tid
+                            ],
+                        ],
     // Rest of your arguments
 ];
 					$wq = new WP_Query($args);

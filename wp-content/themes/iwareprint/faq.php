@@ -78,10 +78,10 @@
 
 			<div class="faq-helpdesk-box" style="margin-top: 50px;">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_helpdesk.png" alt="helpdesk">
-                    <h2>Baza wiedzy</h2>
-                    <p>Nawigacja po systemie. Instrukcje techniczne</p>
+                    <h2><?= pl_t('Baza wiedzy', $lang) ?></h2>
+                    <p><?= pl_t('Nawigacja po systemie. Instrukcje techniczne', $lang) ?></p>
                     <div class="box-arrow">
-                        <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
+                        <a href="<?php echo esc_url(home_url( pl_t('/baza-wiedzy', $lang))); ?>" class="box-arrow-link"><img src="<?php echo get_template_directory_uri(); ?>/img/arrow.png" alt="link"></a>
                     </div>
             </div>
 

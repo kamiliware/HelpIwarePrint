@@ -481,6 +481,33 @@ if ( function_exists( 'pll_register_string' ) ) {
         pll_register_string('blog-url', 'https://blog.iwareprint.pl');
         pll_register_string('load-more', 'Wczytaj więcej');
         pll_register_string('watch-tips', 'Obejrzyj nasze wskazówki');
+        pll_register_string('join', 'Dołącz');
+        pll_register_string('on-hand','Na bieżąco i z tematem pod reką.');
+        pll_register_string('good-contact','Cenimy sobie dobry kontakt');
+        pll_register_string('book-online','Rezerwuj spotkanie ON-LINE');
+        pll_register_string('tech-support','Pomoc techniczna');
+        pll_register_string('Video tutorials', 'Filmy instruktażowe');
+        pll_register_string('updates', 'Aktualizacje iP');
+        pll_register_string('services','Serwisy iwarePrint');
+        pll_register_string('modules','Moduły');
+        pll_register_string('outsourcing','Podzlecanie');
+        pll_register_string('production', 'Produkcja');
+        pll_register_string('trader','Handlowiec');
+        pll_register_string('reseller','Reseller');
+        pll_register_string('preflight','Preflight');
+        pll_register_string('wizard', 'Kreator');
+        pll_register_string('benefits','Korzyści');
+        pll_register_string('traits', 'Cechy');
+        pll_register_string('pricing', 'Cennik');
+        pll_register_string('cookies', 'Korzystając z tej witryny, akceptujesz zobowiązania wynikające z postanowień Regulaminu ogólnego iwarePrint. Używamy plików cookies, celem ułatwienia korzystania z serwisu. Kontynuowanie przeglądania naszej strony oznacza zgodę na ich użycie.');
+        pll_register_string('rulebook', 'Regulamin serwisu iwarePrint');
+        pll_register_string('privacy-policy', 'Polityka Prywatności');
+        pll_register_string('presentation-registration', 'Umów się na prezentację systemu');
+        pll_register_string('booking','Zarezerwuj');
+        pll_register_string('fast-contact','Szybkie pytanie, szybka odpowiedź, szybki kontakt.');
+        pll_register_string('selling','w sprawach sprzedażowych');
+        pll_register_string('calling', 'Dzwonię');
+
 
     });
 }

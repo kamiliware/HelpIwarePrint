@@ -65,8 +65,10 @@
                         if ( function_exists( 'pll_get_post_language' ) ):
                             $lang = pll_get_post_language($post->ID);
                         endif;
-                        ?>
-                        <?php
+                        $languageSwitcher = pll_the_languages([
+                            "raw" => 1,
+                            "post_id" => 1
+                        ]);
                         if (isset($lang)):
                             if ($lang == 'pl'):
                                 wp_nav_menu([
@@ -81,11 +83,7 @@
                                     'fallback_cb'     => 'bs4navwalker::fallback',
                                     'walker'          => new bs4navwalker(),
                                 ]);
-                                var_dump(pll_the_languages([
-                                    "dropdown" => 1,
-                                    "raw" => 1,
-                                    "post_id" => 1
-                                ]));
+                                echo "<a class='languageSwitch' href='".$languageSwitcher['en']['url']."'><img src='".$languageSwitcher['en']['flag']."' /> ".$languageSwitcher['en']['name']."</a>";
                             elseif ($lang == 'en'):
                                 wp_nav_menu([
                                     'menu'            => 'top-english',
@@ -99,11 +97,7 @@
                                     'fallback_cb'     => 'bs4navwalker::fallback',
                                     'walker'          => new bs4navwalker(),
                                 ]);
-                                var_dump(pll_the_languages([
-                                    "dropdown" => 1,
-                                    "raw" => 1,
-                                    "post_id" => 1
-                                ]));
+                                echo "<a class='languageSwitch' href='".$languageSwitcher['pl']['url']."'><img src='".$languageSwitcher['pl']['flag']."' /> ".$languageSwitcher['pl']['name']."</a>";
                             endif;
                         endif;
                             ?>
@@ -112,29 +106,29 @@
 
                 <div class="col-3 d-lg-none text-right">
                     <input id="toggle" type="checkbox">
-					  <label for="toggle" id="toggle-label">
-					  <span></span>
-					  <span></span>
-					  <span></span>
-					  </label>
-					  <div class="hamburger-menu-container mobile-menu">
-						  <ul>
-							<?php
-							   wp_nav_menu([
-								 'menu'            => 'top',
-								 'theme_location'  => 'top',
-								 'container'       => 'div',
-								 'container_id'    => 'bs4navbar',
-								 'container_class' => '',
-								 'menu_id'         => false,
-								 'menu_class'      => 'nav',
-								 'depth'           => 2,
-								 'fallback_cb'     => 'bs4navwalker::fallback',
-								 'walker'          => new bs4navwalker()
-							   ]);
-							?>
-						</ul>
-            		</div>
+                    <label for="toggle" id="toggle-label">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="hamburger-menu-container mobile-menu">
+                        <ul>
+                            <?php
+                                wp_nav_menu([
+                                 'menu'            => 'top',
+                                 'theme_location'  => 'top',
+                                 'container'       => 'div',
+                                 'container_id'    => 'bs4navbar',
+                                 'container_class' => '',
+                                 'menu_id'         => false,
+                                 'menu_class'      => 'nav',
+                                 'depth'           => 2,
+                                 'fallback_cb'     => 'bs4navwalker::fallback',
+                                 'walker'          => new bs4navwalker()
+                                ]);
+                            ?>
+                        </ul>
+                    </div>
                 </div>
 				
 				<div class="col-2 text-right">

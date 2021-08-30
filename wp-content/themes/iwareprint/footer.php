@@ -1,39 +1,44 @@
 <!-- Footer -->
     <section id="footer-links">
-
+        <?php
+        global $post;
+        if ( function_exists( 'pll_get_post_language' ) ):
+            $lang = pll_get_post_language($post->ID);
+        endif;
+        ?>
         <div class="container">
             <div class="row">
 
                 <div class="col-md-3 webinars">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_webinars.png" alt="webinars">
                     <span class="line"></span>
-                    <h2>Najbliższe webinaria</h2>
+                    <h2><?= pl_t('Najbliższe webinaria', $lang) ?></h2>
                     <p><?php the_field('webinaria', 'option'); ?></p>
-                    <a target="_blank" href="http://webinaria.iwareprint.pl/">Zapisz się</a>
+                    <a target="_blank" href="<?= pl_t('http://webinaria.iwareprint.pl/', $lang) ?>"><?= pl_t('Zapisz się', $lang) ?></a>
                 </div>
 
                 <div class="col-md-3 outsourcing">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_outsourcing.png" alt="outsourcing">
                     <span class="line"></span>
                     <h2>Dropshipping<br>Outsourcing</h2>
-                    <p>Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.</p>
-                    <a target="_blank" href="http://podzlecdruk.pl/">Przejdź</a>
+                    <p><?= pl_t('Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.', $lang) ?></p>
+                    <a target="_blank" href="http://podzlecdruk.pl/"><?= pl_t('Przejdź', $lang) ?></a>
                 </div>
 				
 				<div class="col-md-3 creator">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_creator.png" alt="creator">
                     <span class="line"></span>
-                    <h2>Kreator wydruków</h2>
-                    <p>Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.</p>
-                    <a target="_blank" href="http://kreatorwydrukow.pl/">Przejdź</a>
+                    <h2><?= pl_t('Kreator wydruków', $lang) ?></h2>
+                    <p><?= pl_t('Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.', $lang) ?></p>
+                    <a target="_blank" href="http://kreatorwydrukow.pl/"><?= pl_t('Przejdź', $lang) ?></a>
                 </div>
 
                 <div class="col-md-3 conference">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_conference.png" alt="conference">
                     <span class="line"></span>
-                    <h2>Najbliższa konferencja</h2>
+                    <h2><?= pl_t('Najbliższa konferencja', $lang) ?></h2>
                     <p><?php the_field('konferencje', 'option'); ?></p>
-                    <a target="_blank" href="http://konferencja.podzlecdruk.pl/">Dołącz</a>
+                    <a target="_blank" href="http://konferencja.podzlecdruk.pl/"><?= pl_t('Dołącz', $lang) ?></a>
                 </div>
 
             </div>
@@ -47,7 +52,7 @@
 			
             
             <h4>Newsletter</h4>
-            <h3>Na bieżąco i z tematem pod reką.</h3>
+            <h3><?= pl_t('Na bieżąco i z tematem pod reką.', $lang) ?></h3>
             <span class="line"></span>
 			
 			<?php echo do_shortcode( '[FM_form id="1"]' ); ?>
@@ -63,7 +68,7 @@
         	
 			<div class="col-12 col-md-6 col-lg-3">
 				<p>
-					<span>Cenimy sobie dobry kontakt</span>
+					<span><?= pl_t('Cenimy sobie dobry kontakt', $lang) ?></span>
 				</p>
 				<img src="https://iwareprint.pl/wp-content/uploads/2020/08/footer-logo.png" />
 			</div>
@@ -104,7 +109,7 @@
 			</div>
 			
 			<div class="col-12 col-lg-3 f-middle">
-				<a target="_blank" href="https://calendly.com/iware-print-sprzedaz" class="f-btn">Rezerwuj spotkanie ON-LINE</a>
+				<a target="_blank" href="https://calendly.com/iware-print-sprzedaz" class="f-btn"><?= pl_t('Rezerwuj spotkanie ON-LINE', $lang) ?></a>
 			</div>
 			<div class="col-12 col-lg-9">
 				<div class="grey-line"></div>	
@@ -112,15 +117,15 @@
 			
 			<div class="col-12 col-md-6 col-lg-2">
 				<h4>
-					Pomoc techniczna
+                    <?= pl_t('Pomoc techniczna', $lang) ?>
 				</h4>
-				<a target="_blank" href="https://help.iwareprint.pl/baza-wiedzy/">Baza wiedzy</a>
-				<a target="_blank" href="https://help.iwareprint.pl/tutoriale/">Filmy instruktażowe</a>
-				<a target="_blank" href="https://help.iwareprint.pl/aktualizacje/">Aktualizacje iP</a>
+				<a target="_blank" href="https://help.iwareprint.pl/baza-wiedzy/"><?= pl_t('Baza wiedzy', $lang) ?></a>
+				<a target="_blank" href="https://help.iwareprint.pl/tutoriale/"><?= pl_t('Filmy instruktażowe', $lang) ?></a>
+				<a target="_blank" href="https://help.iwareprint.pl/aktualizacje/"><?= pl_t('Aktualizacje iP', $lang) ?></a>
 			</div>
 			<div class="col-12 col-md-6 col-lg-2">
 				<h4>
-					Serwisy iwarePrint
+                    <?= pl_t('Serwisy iwarePrint', $lang) ?>
 				</h4>
 				<a target="_blank" href="https://iwareprint.pl/">iwareprint.pl</a>
 				<a target="_blank" href="https://help.iwareprint.pl/">help.iwareprint.pl</a>
@@ -132,24 +137,24 @@
 			</div>
 			<div class="col-12 col-md-6 col-lg-2">
 				<h4>
-					Moduły
+                    <?= pl_t('Moduły', $lang) ?>
 				</h4>
 				<a href="https://iwareprint.pl/e-commerce/">E-commerce</a>
-				<a href="https://iwareprint.pl/podzlecanie/">Podzlecanie</a>
-				<a href="https://iwareprint.pl/produkcja/">Produkcja</a>
-				<a href="https://iwareprint.pl/handlowiec/">Handlowiec</a>
-				<a href="https://iwareprint.pl/reseller/">Reseller</a>
-				<a href="https://iwareprint.pl/preflight/">Preflight</a>
-				<a href="https://iwareprint.pl/kreator/">Kreator</a>
+				<a href="https://iwareprint.pl/podzlecanie/"><?= pl_t('Podzlecanie', $lang) ?></a>
+				<a href="https://iwareprint.pl/produkcja/"><?= pl_t('Produkcja', $lang) ?></a>
+				<a href="https://iwareprint.pl/handlowiec/"><?= pl_t('Handlowiec', $lang) ?></a>
+				<a href="https://iwareprint.pl/reseller/"><?= pl_t('Reseller', $lang) ?></a>
+				<a href="https://iwareprint.pl/preflight/"><?= pl_t('Preflight', $lang) ?></a>
+				<a href="https://iwareprint.pl/kreator/"><?= pl_t('Kreator', $lang) ?></a>
 			</div>
 			<div class="col-12 col-md-6 col-lg-2">
 				<h4>
 					iwarePrint
 				</h4>
-				<a href="https://iwareprint.pl/korzysci/">Korzyści</a>
-				<a href="https://iwareprint.pl/cechy/">Cechy</a>
+				<a href="https://iwareprint.pl/korzysci/"><?= pl_t('Korzyści', $lang) ?></a>
+				<a href="https://iwareprint.pl/cechy/"><?= pl_t('Cechy', $lang) ?></a>
 				<a target="_blank" href="https://help.iwareprint.pl/faq/">FAQ</a>
-				<a href="https://iwareprint.pl/cennik/">Cennik</a>
+				<a href="https://iwareprint.pl/cennik/"><?= pl_t('Cennik', $lang) ?></a>
 			</div>
 			<div class="col-12 col-lg-4">
 				<div class="f-socials">
@@ -160,12 +165,12 @@
 				<div class="f-copy">
 					<p>
 						Copyright © 2020 Iware Software House Sp. z o.o.<br>
-						Korzystając z tej witryny, akceptujesz zobowiązania wynikające z postanowień Regulaminu ogólnego iwarePrint. Używamy plików cookies, celem ułatwienia korzystania z serwisu. Kontynuowanie przeglądania naszej strony oznacza zgodę na ich użycie.
+                        <?= pl_t('Korzystając z tej witryny, akceptujesz zobowiązania wynikające z postanowień Regulaminu ogólnego iwarePrint. Używamy plików cookies, celem ułatwienia korzystania z serwisu. Kontynuowanie przeglądania naszej strony oznacza zgodę na ich użycie.', $lang) ?>
 					</p>
 				</div>
 				<div class="f-links">
-					<a href="https://iwareprint.pl/regulamin/">Regulamin serwisu iwarePrint</a><br>
-					<a href="https://iwareprint.pl/wp-content/uploads/2020/12/2020-12-04-polityka-prywatnos%CC%81ci-iwareprint.pl-RODO-v2.pdf">Polityka Prywatności</a>
+					<a href="https://iwareprint.pl/regulamin/"><?= pl_t('Regulamin serwisu iwarePrint', $lang) ?></a><br>
+					<a href="https://iwareprint.pl/wp-content/uploads/2020/12/2020-12-04-polityka-prywatnos%CC%81ci-iwareprint.pl-RODO-v2.pdf"><?= pl_t('Polityka Prywatności', $lang) ?></a>
 				</div>
 			</div>
 			
@@ -182,22 +187,22 @@
 			<div class="col-12 col-lg-4 left">	
 				<div class="heading">
 					<h5>
-						Umów się na prezentację systemu
+                        <?= pl_t('Umów się na prezentację systemu', $lang) ?>
 					</h5>
 				</div>
 				<div class="call">
-					<a target="_blank" href="https://calendly.com/iware-print-sprzedaz/" class="f-btn">Zarezerwuj</a>
+					<a target="_blank" href="https://calendly.com/iware-print-sprzedaz/" class="f-btn"><?= pl_t('Zarezerwuj', $lang) ?></a>
 				</div>
 			</div>
 			<div class="col-12 col-lg-8 right">
 				<div class="heading">
 					<h5>
-						Szybkie pytanie, szybka odpowiedź, szybki kontakt.<br>
-						<span>+48 533 025 708 (w sprawach sprzedażowych)</span>
+                        <?= pl_t('Szybkie pytanie, szybka odpowiedź, szybki kontakt.', $lang) ?><br>
+						<span>+48 533 025 708 (<?= pl_t('w sprawach sprzedażowych', $lang) ?>)</span>
 					</h5>
 				</div>
 				<div class="right-call">
-					<a href="tel:+48533025708" class="f-btn">Dzwonię</a>
+					<a href="tel:+48533025708" class="f-btn"><?= pl_t('Dzwonię', $lang) ?></a>
 				</div>
 			</div>
 			
@@ -209,7 +214,7 @@
 			
 			<div class="col-12 left">
 				<div class="call" style="margin: 15px auto;">
-					<a target="_blank" href="https://calendly.com/iware-print-sprzedaz/" class="f-btn" style="margin: 0;">Umów się na prezentację systemu</a>
+					<a target="_blank" href="https://calendly.com/iware-print-sprzedaz/" class="f-btn" style="margin: 0;"><?= pl_t('Umów się na prezentację systemu', $lang) ?></a>
 				</div>
 			</div>
 			

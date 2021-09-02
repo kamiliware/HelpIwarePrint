@@ -26,14 +26,16 @@
                         <div class="hamburger-menu-container">
                             <?php
                             $termName = 'kategorie';
+                            $taxonomies = [$termName];
+                            $args = array(
+                                'taxonomy' => $termName,
+                                'hide_empty'    => false,
+                                'orderby'       => 'term_order',
+                                'parent' => 0
+                            );
+                            $cat_terms = apply_filters( 'get_terms_orderby', 'term_order', $args, $taxonomies);
                             $cat_terms = get_terms(
-                                $termName,
-                                array(
-                                    'hide_empty'    => false,
-                                    'orderby'       => 'name',
-                                    'order'         => 'ASC',
-                                    'parent' => 0
-                                )
+                                $args
                             );
                             if( $cat_terms ) :?>
                                 <ul>

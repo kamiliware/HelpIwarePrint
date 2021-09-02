@@ -26,14 +26,16 @@
                         <div class="hamburger-menu-container">
                             <?php
                             $termName = 'kategorie';
+                            $taxonomies = [$termName];
+                            $args = array(
+                                'taxonomy' => $termName,
+                                'hide_empty'    => false,
+                                'orderby'       => 'term_order',
+                                'parent' => 0
+                            );
+                            $cat_terms = apply_filters( 'get_terms_orderby', 'term_order', $args, $taxonomies);
                             $cat_terms = get_terms(
-                                $termName,
-                                array(
-                                    'hide_empty'    => false,
-                                    'orderby'       => 'name',
-                                    'order'         => 'ASC',
-                                    'parent' => 0
-                                )
+                                $args
                             );
                             if( $cat_terms ) :?>
                                 <ul>
@@ -110,37 +112,46 @@
                 <div class="col-lg-9 content helpdesk-content">
                     <img class="arrow-back" src="<?php echo get_template_directory_uri(); ?>/img/arrow_back.png" alt="arrow back">
                     <div class="breadcrumbs">
-						<a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>">Baza wiedzy</a>  /  
-						
+						<a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>">Baza wiedzy</a>  /
+
 						<?php
 						http://newhelp.iwareprint.pl/baza-wiedzy/e-commerce/
 						$str = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 							$last = explode("/", $str, 3);
 						$lastx = $last[2];
 						$lasty = substr($lastx, 0, 4);
-						
+
 						if($lasty=='e-co'){
 							?>
-						<a href="http://newhelp.iwareprint.pl/baza-wiedzy/e-commerce/">Moduł E-commerce</a>  /  
+						<a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/e-commerce/">Moduł E-commerce</a>  /
 						<?php
 						}
-						
+
 						if($lasty=='krea'){
 							?>
-						<a href="http://newhelp.iwareprint.pl/baza-wiedzy/kreator-wydrukow/">Moduł Kreator Wydruków</a>  /  
+						<a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/kreator-wydrukow/">Moduł Kreator Wydruków</a>  /
 						<?php
 						}
 
 
 
 						$terms = get_the_terms( $post->ID , 'kategorie' );
-						foreach ( $terms as $term ):?>
-						
-						<a href="<?php echo esc_url( home_url("/baza-wiedzy/$term->slug") ) ?>"><?php echo $term->name; ?></a>
-						
-						<?php endforeach;?>
-						
-						
+						foreach ( $terms as $term ) {
+
+						$term_link = get_term_link( $term );
+						if ( is_wp_error( $term_link ) ) {
+							continue;
+						}?>
+
+						<a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>/<?php echo $term->slug; ?>"><?php echo $term->name; ?></a>
+
+						<?php }
+
+
+
+						?>
+
+
 						<?php
 $term = get_queried_object();
 $parent = ( isset( $term->parent ) ) ? get_term_by( 'id', $term->parent, 'kategorie' ) : false;

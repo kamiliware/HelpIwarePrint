@@ -26,14 +26,16 @@
                         <div class="hamburger-menu-container">
                             <?php
                             $termName = 'kategorie';
+                            $taxonomies = [$termName];
+                            $args = array(
+                                'taxonomy' => $termName,
+                                'hide_empty'    => false,
+                                'orderby'       => 'term_order',
+                                'parent' => 0
+                            );
+                            $cat_terms = apply_filters( 'get_terms_orderby', 'term_order', $args, $taxonomies);
                             $cat_terms = get_terms(
-                                $termName,
-                                array(
-                                    'hide_empty'    => false,
-                                    'orderby'       => 'name',
-                                    'order'         => 'ASC',
-                                    'parent' => 0
-                                )
+                                $args
                             );
                             if( $cat_terms ) :?>
                                 <ul>
@@ -47,8 +49,7 @@
                                                     $subCat = get_term_by('id', $child, 'kategorie');
                                                     $subArgs = array(
                                                         'post_status'           => 'publish',
-                                                        'orderby'               => 'menu_order',
-                                                        'order'               => 'ASC',
+                                                        'orderby'               => 'term_order',
                                                         'tax_query'             => array(
                                                             array(
                                                                 'taxonomy' => 'kategorie',
@@ -77,8 +78,7 @@
                                         <?php else:
                                             $args = array(
                                                 'post_status'           => 'publish',
-                                                'orderby'               => 'menu_order',
-                                                'order'               => 'ASC',
+                                                'orderby'               => 'term_order',
                                                 'tax_query'             => array(
                                                     array(
                                                         'taxonomy' => 'kategorie',
@@ -111,7 +111,7 @@
                     <img class="arrow-back" src="<?php echo get_template_directory_uri(); ?>/img/arrow_back.png" alt="arrow back">
                     <div class="breadcrumbs">
                         <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>  /  <a href="<?php echo esc_url(home_url('/baza-wiedzy')); ?>">Baza wiedzy</a>  /
-						
+
 						<?php
                             $taxonomyName = "kategorie";
                             //This gets top layer terms only.  This is done by setting parent to 0.
@@ -119,9 +119,9 @@
 
 
 
-						
+
 						$terms = get_the_terms( $post->ID , 'kategorie' );
-						
+
 						foreach ( $terms as $term ) {
 
 						$term_link = get_term_link( $term );
@@ -151,8 +151,8 @@
 
 
 							?></span>
-						
-						
+
+
 						<?php }
 						?>
 
@@ -161,8 +161,8 @@
 
             ?>
                 <h1><?php echo $case_study_cat_name; ?></h1>
-					
-					
+
+
 					<?php
 
 
@@ -200,6 +200,7 @@
                         'tax_query' => [
                             [
                                 'taxonomy' => 'kategorie',
+                                'orderby' => 'term_order',
                                 'terms' => $tid
                             ],
                         ],
@@ -238,19 +239,19 @@
 
 
 					?>
-					
-					
-					
-					
-					
-					
-					
-					
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
     </section>
- 
+
 <?php get_footer(helpdesk); ?>
 
 

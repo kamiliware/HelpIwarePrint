@@ -246,25 +246,29 @@ add_action( 'init', function () {
 } );
 
 
-//function wpse_358157_parse_request( $wp ) {
-//    $path      = 'baza-wiedzy'; // rewrite slug; no trailing slashes
-//    $taxonomy  = 'kategorie';        // taxonomy slug
-//    $post_type = 'helpdesk';                 // post type slug
-//
-//    if ( preg_match( '#^' . preg_quote( $path, '#' ) . '/#', $wp->request ) &&
-//        isset( $wp->query_vars[ $taxonomy ] ) ) {
-//        $slug = $wp->query_vars[ $taxonomy ];
-//        $slug = ltrim( substr( $slug, strrpos( $slug, '/' ) ), '/' );
-//
-//        if ( ! term_exists( $slug, $taxonomy ) ) {
-//            $wp->query_vars['name']       = $wp->query_vars[ $taxonomy ];
-//            $wp->query_vars['post_type']  = $post_type;
-//            $wp->query_vars[ $post_type ] = $wp->query_vars[ $taxonomy ];
-//            unset( $wp->query_vars[ $taxonomy ] );
-//        }
-//    }
-//}
-//add_action( 'parse_request', 'wpse_358157_parse_request' );
+
+
+
+
+function wpse_358157_parse_request( $wp ) {
+    $path      = 'baza-wiedzy'; // rewrite slug; no trailing slashes
+    $taxonomy  = 'kategorie';        // taxonomy slug
+    $post_type = 'e_commerce_module';                 // post type slug
+
+    if ( preg_match( '#^' . preg_quote( $path, '#' ) . '/#', $wp->request ) &&
+        isset( $wp->query_vars[ $taxonomy ] ) ) {
+        $slug = $wp->query_vars[ $taxonomy ];
+        $slug = ltrim( substr( $slug, strrpos( $slug, '/' ) ), '/' );
+
+        if ( ! term_exists( $slug, $taxonomy ) ) {
+            $wp->query_vars['name']       = $wp->query_vars[ $taxonomy ];
+            $wp->query_vars['post_type']  = $post_type;
+            $wp->query_vars[ $post_type ] = $wp->query_vars[ $taxonomy ];
+            unset( $wp->query_vars[ $taxonomy ] );
+        }
+    }
+}
+add_action( 'parse_request', 'wpse_358157_parse_request' );
 
 // Video post type
 function tutorials_post_type() {
@@ -343,19 +347,6 @@ function monthTranslator(string $key) {
         return $month;
     }
 }
-
-///**
-// * This function modifies the main WordPress query to include an array of
-// * post types instead of the default 'post' post type.
-// *
-// * @param object $query The main WordPress query.
-// */
-//function tg_include_custom_post_types_in_search_results( $query ) {
-//    if ( $query->is_main_query() && $query->is_search() && ! is_admin() ) {
-//        $query->set( 'post_type', array( 'podzlecanie', 'preflight', 'reseller', 'production', 'wizard', 'trader', 'e_commerce_module', 'implementation_list', 'helpdesk', 'aktualizacje' ) );
-//    }
-//}
-//add_action( 'pre_get_posts', 'tg_include_custom_post_types_in_search_results' );
 
 // Enable comments
 function enable_comments_for_all(){

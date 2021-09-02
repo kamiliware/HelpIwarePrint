@@ -85,7 +85,6 @@ function helpdesk_taxonomy() {
         )
     );
 }
-
 function helpdesk_post_type() {
     register_post_type( 'helpdesk', [
             'rewrite'      => [
@@ -106,7 +105,7 @@ function helpdesk_post_type() {
     );
     register_post_type('implementation_list', [
         'rewrite'      => [
-            'with_front' => false,
+            'with_front' => true,
             'has-archive' => false,
             'slug'       => 'lw',
         ],
@@ -124,7 +123,7 @@ function helpdesk_post_type() {
         'rewrite'      => [
             'with_front' => false,
             'has-archive' => false,
-            'slug'       => 'e-commerce',
+            'slug'       => false,
         ],
         'has-archive' => false,
         'hierarchical' => true,
@@ -249,25 +248,25 @@ add_action( 'init', function () {
 
 
 
-//function wpse_358157_parse_request( $wp ) {
-//    $path      = 'baza-wiedzy'; // rewrite slug; no trailing slashes
-//    $taxonomy  = 'kategorie';        // taxonomy slug
-//    $post_type = 'helpdesk';                 // post type slug
-//
-//    if ( preg_match( '#^' . preg_quote( $path, '#' ) . '/#', $wp->request ) &&
-//        isset( $wp->query_vars[ $taxonomy ] ) ) {
-//        $slug = $wp->query_vars[ $taxonomy ];
-//        $slug = ltrim( substr( $slug, strrpos( $slug, '/' ) ), '/' );
-//
-//        if ( ! term_exists( $slug, $taxonomy ) ) {
-//            $wp->query_vars['name']       = $wp->query_vars[ $taxonomy ];
-//            $wp->query_vars['post_type']  = $post_type;
-//            $wp->query_vars[ $post_type ] = $wp->query_vars[ $taxonomy ];
-//            unset( $wp->query_vars[ $taxonomy ] );
-//        }
-//    }
-//}
-//add_action( 'parse_request', 'wpse_358157_parse_request' );
+function wpse_358157_parse_request( $wp ) {
+    $path      = 'baza-wiedzy'; // rewrite slug; no trailing slashes
+    $taxonomy  = 'kategorie';        // taxonomy slug
+    $post_type = 'e_commerce_module';                 // post type slug
+
+    if ( preg_match( '#^' . preg_quote( $path, '#' ) . '/#', $wp->request ) &&
+        isset( $wp->query_vars[ $taxonomy ] ) ) {
+        $slug = $wp->query_vars[ $taxonomy ];
+        $slug = ltrim( substr( $slug, strrpos( $slug, '/' ) ), '/' );
+
+        if ( ! term_exists( $slug, $taxonomy ) ) {
+            $wp->query_vars['name']       = $wp->query_vars[ $taxonomy ];
+            $wp->query_vars['post_type']  = $post_type;
+            $wp->query_vars[ $post_type ] = $wp->query_vars[ $taxonomy ];
+            unset( $wp->query_vars[ $taxonomy ] );
+        }
+    }
+}
+add_action( 'parse_request', 'wpse_358157_parse_request' );
 
 // Video post type
 function tutorials_post_type() {
@@ -370,41 +369,39 @@ if( function_exists('acf_add_options_page') ) {
 
 //TŁUMACZENIE
 
-add_action('init', function() {
-    pll_register_string('baza-wiedzy', 'Baza wiedzy');
-    pll_register_string('nawigacja-po-systemie', 'Nawigacja po systemie. Instrukcje techniczne');
-    pll_register_string('every-question', 'Na każde pytanie jest odpowiedź');
-    pll_register_string('materials', 'Materiały do pobrania');
-    pll_register_string('materials-base', 'Baza materiałów iwarePRINT');
-    pll_register_string('go', 'Przejdź');
-    pll_register_string('baza-wiedzy-url', '/baza-wiedzy');
-    pll_register_string('do-pobrania-url', '/do-pobrania');
-    pll_register_string('upcoming-webinars', 'Najbliższe webinaria');
-    pll_register_string('webinaria-page-url', 'http://webinaria.iwareprint.pl/');
-    pll_register_string('sign-up', 'Zapisz się');
-    pll_register_string('strona-dedykowana-modulowi-podzlecania', 'Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.');
-    pll_register_string('podzlec-druk-url', 'http://podzlecdruk.pl/');
-    pll_register_string('print-wizard', 'Kreator wydruków');
-    pll_register_string('strona-dedykowana-modulowi-kreator', 'Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.');
-    pll_register_string('upcoming-conference', 'Najbliższa konferencja');
-    pll_register_string('konferencja-url', 'http://konferencja.podzlecdruk.pl/');
-    pll_register_string('news','Aktualizacje');
-    pll_register_string('read-more','Czytaj więcej');
-    pll_register_string('updates-url', '/aktualizacje');
-    pll_register_string('full-list', 'Pełna lista');
-    pll_register_string('see-full-list', 'Zobacz pełną listę');
-    pll_register_string('materials-with-break', 'Materiały<br>do pobrania');
-    pll_register_string('see', 'Zobacz');
-    pll_register_string('video-tutorials', 'Materiały wideo');
-    pll_register_string('lok', 'Mamy dla Ciebie sporo wiedzy!');
-    pll_register_string('tutorials-url', '/materialy-wideo');
-    pll_register_string('see-all', 'Zobacz wszystkie');
-    pll_register_string('ip-blog', 'Blog IwarePrint');
-    pll_register_string('no-posts', 'Nie ma żadnych postów.');
-    pll_register_string('blog-url', 'https://blog.iwareprint.pl');
-    pll_register_string('load-more', 'Wczytaj więcej');
-    pll_register_string('watch-tips', 'Obejrzyj nasze wskazówki');
-
-});
-
-?>
+//add_action('init', function() {
+//    pll_register_string('baza-wiedzy', 'Baza wiedzy');
+//    pll_register_string('nawigacja-po-systemie', 'Nawigacja po systemie. Instrukcje techniczne');
+//    pll_register_string('every-question', 'Na każde pytanie jest odpowiedź');
+//    pll_register_string('materials', 'Materiały do pobrania');
+//    pll_register_string('materials-base', 'Baza materiałów iwarePRINT');
+//    pll_register_string('go', 'Przejdź');
+//    pll_register_string('baza-wiedzy-url', '/baza-wiedzy');
+//    pll_register_string('do-pobrania-url', '/do-pobrania');
+//    pll_register_string('upcoming-webinars', 'Najbliższe webinaria');
+//    pll_register_string('webinaria-page-url', 'http://webinaria.iwareprint.pl/');
+//    pll_register_string('sign-up', 'Zapisz się');
+//    pll_register_string('strona-dedykowana-modulowi-podzlecania', 'Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.');
+//    pll_register_string('podzlec-druk-url', 'http://podzlecdruk.pl/');
+//    pll_register_string('print-wizard', 'Kreator wydruków');
+//    pll_register_string('strona-dedykowana-modulowi-kreator', 'Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.');
+//    pll_register_string('upcoming-conference', 'Najbliższa konferencja');
+//    pll_register_string('konferencja-url', 'http://konferencja.podzlecdruk.pl/');
+//    pll_register_string('news','Aktualizacje');
+//    pll_register_string('read-more','Czytaj więcej');
+//    pll_register_string('updates-url', '/aktualizacje');
+//    pll_register_string('full-list', 'Pełna lista');
+//    pll_register_string('see-full-list', 'Zobacz pełną listę');
+//    pll_register_string('materials-with-break', 'Materiały<br>do pobrania');
+//    pll_register_string('see', 'Zobacz');
+//    pll_register_string('video-tutorials', 'Materiały wideo');
+//    pll_register_string('lok', 'Mamy dla Ciebie sporo wiedzy!');
+//    pll_register_string('tutorials-url', '/materialy-wideo');
+//    pll_register_string('see-all', 'Zobacz wszystkie');
+//    pll_register_string('ip-blog', 'Blog IwarePrint');
+//    pll_register_string('no-posts', 'Nie ma żadnych postów.');
+//    pll_register_string('blog-url', 'https://blog.iwareprint.pl');
+//    pll_register_string('load-more', 'Wczytaj więcej');
+//    pll_register_string('watch-tips', 'Obejrzyj nasze wskazówki');
+//
+//});

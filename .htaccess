@@ -39,11 +39,10 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-RedirectMatch 301 ^/blog/(.*)$ http://blog.iwareprint.loc.pl/$1
-RedirectMatch 301 ^/ogolne/(.*)$ http://blog.iwareprint.loc.pl/aktualnosci/$1
-RedirectMatch 301 ^/okiem-drukarza/(.*)$ http://blog.iwareprint.loc.pl/aktualnosci/$1
-RedirectMatch 301 ^/en/blog/(.*)$ http://blog.iwareprint.loc.com/$1
-RedirectMatch 301 ^/en/(.*)$ http://help.iwareprint.loc.com/$1
+RedirectMatch 302 ^/blog/(.*)$ http://blog.iwareprint.loc.pl/$1
+RedirectMatch 302 ^/ogolne/(.*)$ http://blog.iwareprint.loc.pl/aktualnosci/$1
+RedirectMatch 302 ^/en/blog/(.*)$ http://blog.iwareprint.loc.com/$1
+RedirectMatch 302 ^/en/(.*)$ http://help.iwareprint.loc.com/$1
 </IfModule>
 
 # END WordPress

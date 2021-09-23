@@ -6,11 +6,11 @@
 
 <?php get_header(); ?>
 
-	<section id="boxes">
-       
+    <section id="boxes">
+
         <div class="container-fluid">
             <div class="row">
-               
+
                 <div class="col-lg-4 helpdesk-box">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon_helpdesk.png" alt="helpdesk">
                     <?php
@@ -164,7 +164,8 @@
     <section id="tutorials">
         
         <div class="container">
-           
+            <?php var_dump(pll_get_post_translations( $post->ID )['pl']); ?>
+            <?php var_dump(get_post(pll_get_post_translations( $post->ID )['pl'])); ?>
             <h4><?= pl_t('Materiały wideo', $lang) ?></h4>
             <h3><?= pl_t('Mamy dla Ciebie sporo wiedzy!', $lang) ?></h3>
             <span class="line"></span>

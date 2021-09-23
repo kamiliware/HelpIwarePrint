@@ -189,7 +189,6 @@ $parent = ( isset( $term->parent ) ) ? get_term_by( 'id', $term->parent, 'katego
                     <section class="container_help"><?php the_content(); ?></section>
 					
 					<?php comments_template(); ?>
-					
                 </div>
             </div>
         </div>

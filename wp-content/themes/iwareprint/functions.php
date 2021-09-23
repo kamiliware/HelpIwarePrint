@@ -1,11 +1,11 @@
 <?php
 
 if(!defined('PVP_THEME_DIR')) {
-	define('PVP_THEME_DIR', get_theme_root().'/'.get_template().'/');
+    define('PVP_THEME_DIR', get_theme_root().'/'.get_template().'/');
 }
 
 if(!defined('PVP_THEME_URL')) {
-	define('PVP_THEME_URL', WP_CONTENT_URL.'/themes/'.get_template().'/');
+    define('PVP_THEME_URL', WP_CONTENT_URL.'/themes/'.get_template().'/');
 }
 
 // Include custom navwalker
@@ -23,7 +23,7 @@ add_theme_support('html5',array('search-form'));
 
 // Limit words in excerpt
 function custom_excerpt_length( $length ) {
-	return 18;
+    return 18;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
@@ -33,21 +33,21 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
  */
 function arphabet_widgets_init() {
 
-	register_sidebar( array(
-		'name'          => 'Home right sidebar',
-		'id'            => 'home_right_1',
-		'before_widget' => '<div>',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h2>',
-		'after_title'   => '</h2>',
-	) );
+    register_sidebar( array(
+        'name'          => 'Home right sidebar',
+        'id'            => 'home_right_1',
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2>',
+        'after_title'   => '</h2>',
+    ) );
 
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
 // Ajax
 function enqueue_ajax_load_more() {
-   wp_enqueue_script('ajax-load-more'); // Already registered, just needs to be enqueued
+    wp_enqueue_script('ajax-load-more'); // Already registered, just needs to be enqueued
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_ajax_load_more' );
 
@@ -91,16 +91,16 @@ function helpdesk_post_type() {
     register_post_type( 'helpdesk', [
             'rewrite'      => [
                 'with_front' => false,
-				'has-archive' => false,
-				'slug'       => 'nawigacja',
+                'has-archive' => false,
+                'slug'       => 'nawigacja',
             ],
-			 'has-archive' => false,
+            'has-archive' => false,
             'hierarchical' => true,
             'public'       => true,
             'supports'     => [ 'title', 'editor', 'page-attributes' ],
             'labels'       => [
                 'name' => 'Nawigacja',
-			'singular_name' => 'Nawigacja',
+                'singular_name' => 'Nawigacja',
             ],
             'show_in_rest' => true,
         ]
@@ -281,11 +281,11 @@ function tutorials_post_type() {
         'has_archive' => 'tutorials',
         'menu_icon' => 'dashicons-video-alt3',
         'supports' => array('title', 'editor'),
-		'rewrite'      => [
-                'with_front' => true,
-				'has-archive' => 'tutorials',
-				'slug'       => 'tutoriale',
-            ],
+        'rewrite'      => [
+            'with_front' => true,
+            'has-archive' => 'tutorials',
+            'slug'       => 'tutoriale',
+        ],
     );
     register_post_type('tutoriale', $args);
 }
@@ -344,7 +344,7 @@ function monthTranslator(string $key) {
         case 'december':
             return 'grudzień';
         default :
-        return $month;
+            return $month;
     }
 }
 
@@ -358,14 +358,14 @@ function enable_comments_for_all(){
 // Wydarzenia ACF
 if( function_exists('acf_add_options_page') ) {
 
-	acf_add_options_page(array(
-		'page_title' 	=> 'Wydarzenia',
-		'menu_title'	=> 'Wydarzenia',
-		'menu_slug' 	=> 'wydarzenia',
-		'capability'	=> 'edit_posts',
-		'menu_icon' 	=> 'dashicons-calendar-alt',
-		'redirect'		=> false
-	));
+    acf_add_options_page(array(
+        'page_title' 	=> 'Wydarzenia',
+        'menu_title'	=> 'Wydarzenia',
+        'menu_slug' 	=> 'wydarzenia',
+        'capability'	=> 'edit_posts',
+        'menu_icon' 	=> 'dashicons-calendar-alt',
+        'redirect'		=> false
+    ));
 
 }
 function wpse_89494_enqueue_scripts() {
@@ -374,13 +374,25 @@ function wpse_89494_enqueue_scripts() {
             'wpse_89494_style_1',
             get_template_directory_uri() . '/css/style.css',
             array(),
-            '2.0'
+            '4.9'
         );
     }
 }
 
 add_action( 'wp_enqueue_scripts', 'wpse_89494_enqueue_scripts' );
 
+/**
+ * Increases the threshold for scaling big images to 4000.
+ * In this case all the images that are above 4000px (width or height)
+ * will be downscaled to 4000px.
+ *
+ * @param $threshold
+ * @return int
+ */
+function dg_big_image_size_threshold( $threshold ) {
+    return 8000; // new threshold
+}
+add_filter('big_image_size_threshold', 'dg_big_image_size_threshold', 100, 1);
 
 //TŁUMACZENIE
 
@@ -437,7 +449,6 @@ if ( function_exists( 'pll_get_post_language' ) ) {
 }
 
 // these function prefixes can be either you are comfortable with.
-if ( function_exists( 'pll_register_string' ) ) {
     add_action('init', function () {
         pll_register_string('baza-wiedzy', 'Baza wiedzy');
         pll_register_string('nawigacja-po-systemie', 'Nawigacja po systemie. Instrukcje techniczne');
@@ -499,6 +510,4 @@ if ( function_exists( 'pll_register_string' ) ) {
         pll_register_string('selling','w sprawach sprzedażowych');
         pll_register_string('calling', 'Dzwonię');
 
-
-    });
-}
+});

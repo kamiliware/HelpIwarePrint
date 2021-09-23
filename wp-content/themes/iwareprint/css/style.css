@@ -928,67 +928,54 @@ button#searchsubmit {
     width: 80px;
 }
 
-form {
-    padding-top: 3rem;
+
+#newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form {
+    padding: 0;
+    margin: 0;
+    background: none!important;
+    border: none;
 }
 
-.freshMailPopUp__body  {
-    max-width: 100%!important;
-}
-
-input.field {
-    padding-left: 15px!important;
-}
-
-/* #newsletter form label {
-    font-size: 1.3rem;
-    font-weight: 700;
-    display: block;
-    color: #FFFFFF;
-} */
-
-#newsletter form input {
-    background: #FFFFFF;
-    border: 1px solid #EEEEEE;
-    box-shadow: 0 4px 0 0 #E7E7E7;
+#newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form input {
+    background: #FFFFFF!important;
+    border: 1px solid #EEEEEE!important;
     border-radius: 5px;
     display: block;
     width: 100%;
     padding: 10px;
 }
-
-#newsletter form button {
-    color: #FFFFFF!important;
-    padding: 20px;
-    font-size: 2.3rem!important;
-    font-weight: 900!important;
-    background: transparent!important;
-    border: none;
+#newsletter .fca_eoi_form_wrapper .fca_eoi_layout_email_field_wrapper.fca_eoi_layout_field_wrapper {
+    border: none!important;
+}
+#newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form .fca_eoi_layout_submit_button_wrapper, #newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form .fca_eoi_layout_submit_button_wrapper:hover {
+    background: none!important;
+}
+#newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form input[type=submit] {
+    font-weight: 900;
+    color: #fff!important;
+    font-size: 16px;
+    background: #F21559!important;
+    border-radius: 5px;
+    padding: 15px 30px;
+    display: inline-block;
+    border: none!important;
     cursor: pointer;
+}
+
+#newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form input[type=submit]:hover {
+    background: #a10e3b!important;
 }
 
 @media only screen and (min-width: 767px) {
 
-    #newsletter form {
+    #newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form {
         margin: 0 auto;
         display: block;
         width: 600px;
     }
 
-    #newsletter form label {
+    #newsletter .fca_eoi_form_wrapper .fca_eoi_layout_0.fca_eoi_layout_postbox.fca_eoi_form label {
         text-align: left;
-    }
-
-    #newsletter form input {
-        width: 600px;
-        position: absolute;
-        padding: 12px;
-    }
-
-    #newsletter form button {
-        color: #F21559!important;
-        position: relative;
-        bottom: 0;
     }
 
 }
@@ -2212,7 +2199,7 @@ Koniec komentarza */
 .helpdesk-menu .helpdesk-category a:hover {color:#0099FE;}
 .helpdesk-menu .helpdesk-category a.active {color:#0099FE;}
 
-.helpdesk-menu .cat-sub {color: #0099fe; font-weight: 700;}
+.helpdesk-menu .cat-sub {color: #0099fe; font-weight: 400;}
 .helpdesk-menu .cat-sub:hover, .helpdesk-menu .cat-sub.active {color: #fff; background: #0099fe}
 .helpdesk-menu .cat-sub li a {color: #fff}
 .helpdesk-menu .cat-sub li:hover {background: #00558d}

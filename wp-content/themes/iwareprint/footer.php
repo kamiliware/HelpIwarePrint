@@ -54,12 +54,12 @@
             <h4>Newsletter</h4>
             <h3><?= pl_t('Na bieżąco i z tematem pod reką.', $lang) ?></h3>
             <span class="line"></span>
-			
-			<?php echo do_shortcode( '[FM_form id="1"]' ); ?>
-            
-        </div>
-        
-    </section>
+
+        <?php echo do_shortcode( '[optin-cat id=4941]' ); ?>
+
+    </div>
+
+</section>
 
 <div id="footer">
 
@@ -75,38 +75,37 @@
 			<div class="col-12 col-md-6 col-lg-1">
 				<img src="https://iwareprint.pl/wp-content/uploads/2020/08/arrow.png" />	
 			</div>
-			<div class="col-12 col-md-6 col-lg-2">
-				<p>
-					<span>Łukasz Głośny</span>
-					Sales Director<br>
-					+48 533 025 708<br>
-					lukasz.glosny@iware.pl
-				</p>
-			</div>
-<!-- 			<div class="col-12 col-md-6 col-lg-2">
-				<p>
-					<span>Bartłomiej Chęciński</span>
-					Sales Manager<br>
-					+48 663 603 035<br>
-					bartlomiej.checinski@iware.pl
-				</p>
-			</div> -->
-			<div class="col-12 col-md-6 col-lg-2">
-				<p>
-					<span>Dariusz Michalik</span>
-					Moduł Kreator Wydruków<br>
-					+48 571 248 337<br>
-					dariusz.michalik@iware.pl
-				</p>
-			</div>
-			<div class="col-12 col-md-6 col-lg-2">
-				<p>
-					<span>Dr J. Okrucinska</span>
-					Sales Representative DE<br>
-					+49 151 466 382 89<br>
-					justine@iwareprint.de<br>
-				</p>
-			</div>
+            <div class="col-12 col-md-6 col-lg-2">
+                <p>
+                    <span>Team: Customer Success Management</span>
+                    <a href="tel:48515023611">+48 515 023 611</a>
+                    <a href="mailto:bok@iwareprint.pl">bok@iwareprint.pl</a>
+                </p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+                <p>
+                    <span>Daniel Rychlik</span>
+                    Key Account Specialist
+                    <a href="tel:48783778772">+48 783 778 772</a>
+                    <a href="mailto:daniel.rychlik@iware.pl">daniel.rychlik@iware.pl</a>
+                </p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+                <p>
+                    <span>Adam Kowalczyk</span>
+                    Key Account Specialist
+                    <a href="tel:48573998469">+48 573 998 469</a>
+                    <a href="mailto:adam.kowalczyk@iware.pl">adam.kowalczyk@iware.pl</a>
+                </p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-2">
+                <p>
+                    <span>Dariusz Michalik</span>
+                    Moduł Kreator Wydruków
+                    <a href="tel:48571248337">+48 571 248 337</a>
+                    <a href="mailto:dariusz.michalik@iware.pl">dariusz.michalik@iware.pl</a>
+                </p>
+            </div>
 			
 			<div class="col-12 col-lg-3 f-middle">
 				<a target="_blank" href="https://calendly.com/iware-print-sprzedaz" class="f-btn"><?= pl_t('Rezerwuj spotkanie ON-LINE', $lang) ?></a>
@@ -211,35 +210,35 @@
 	
 	<div class="container-fluid f-banners d-lg-none">
         <div class="row">
-			
-			<div class="col-12 left">
-				<div class="call" style="margin: 15px auto;">
-					<a target="_blank" href="https://calendly.com/iware-print-sprzedaz/" class="f-btn" style="margin: 0;"><?= pl_t('Umów się na prezentację systemu', $lang) ?></a>
-				</div>
-			</div>
-			
-		</div>
-	</div>
+
+            <div class="col-12 left">
+                <div class="call" style="margin: 15px auto;">
+                    <a target="_blank" href="https://calendly.com/iware-print-sprzedaz/" class="f-btn" style="margin: 0;">Umów się na prezentację systemu</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>
 
 <script>
 
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("bottom-contact").style.bottom = "-500px";
-  } else {
-    document.getElementById("bottom-contact").style.bottom = "0";
-  }
-  prevScrollpos = currentScrollPos;
-}
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("bottom-contact").style.bottom = "-500px";
+        } else {
+            document.getElementById("bottom-contact").style.bottom = "0";
+        }
+        prevScrollpos = currentScrollPos;
+    }
 </script>
-   
-	<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js"></script>
-    
-    <?php wp_footer(); ?>
+
+<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js"></script>
+
+<?php wp_footer(); ?>
 
 </body>
 </html>

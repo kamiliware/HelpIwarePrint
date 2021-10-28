@@ -2,7 +2,7 @@
 Contributors: optimole
 Tags: image optimization, convert webp, responsive images, lazy load, images, optimization, performance, photos, free cdn
 Requires at least: 4.7
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -92,6 +92,21 @@ Premium users will be able to optimize images for more than 25k monthly active u
 4. Plugin settings
 
 == Changelog ==
+
+##### [Version 3.1.3](https://github.com/Codeinwp/optimole-wp/compare/v3.1.2...v3.1.3) (2021-08-06)
+
+* Preserve selected custom domain on stats refresh when multiple custom domains are used.
+
+
+
+
+##### [Version 3.1.2](https://github.com/Codeinwp/optimole-wp/compare/v3.1.1...v3.1.2) (2021-08-04)
+
+* Adds a filter to force replacements as optml_force_replacement
+* Fix content path being root directory
+
+
+
 
 ##### [Version 3.1.1](https://github.com/Codeinwp/optimole-wp/compare/v3.1.0...v3.1.1) (2021-05-31)
 

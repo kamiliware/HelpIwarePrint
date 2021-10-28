@@ -8,16 +8,16 @@ services:
       - 80:80
     environment:
       NODE_ENV: development
-      WORDPRESS_DB_HOST: database
+      WORDPRESS_DB_HOST: maria
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
     links:
-      - database
+      - maria
     volumes:
       - ./..:/var/www/html:rw
 
-  database:
+  maria:
     image: mariadb
     environment:
       MYSQL_DATABASE: exampledb
@@ -25,7 +25,7 @@ services:
       MYSQL_PASSWORD: examplepass
       MYSQL_ROOT_PASSWORD: 'pass123'
     volumes:
-      - database:/var/lib/mysql
+      - maria:/var/lib/mysql
 
   adminer:
     image: adminer
@@ -34,5 +34,5 @@ services:
 
 volumes:
   wordpress:
-  database:
+  maria:
   adminer:

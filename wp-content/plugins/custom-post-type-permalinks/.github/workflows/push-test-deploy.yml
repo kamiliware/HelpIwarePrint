@@ -20,16 +20,13 @@ jobs:
       matrix:
         include:
           - php: 7.4
-            wp: trunk
-            experimental: true
-          - php: 7.4
             wp: latest
           - php: 7.3
             wp: latest
           - php: 7.2
             wp: latest
           - php: 7.2
-            wp: 5.1
+            wp: 5.7
           - php: 7.0
             wp: '5.0'
           - php: 5.6

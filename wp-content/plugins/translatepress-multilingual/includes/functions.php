@@ -8,7 +8,7 @@
 function trp_the_language_switcher(){
     $trp = TRP_Translate_Press::get_trp_instance();
     $language_switcher = $trp->get_component( 'language_switcher' );
-    echo $language_switcher->language_switcher();
+    echo $language_switcher->language_switcher(); /* phpcs:ignore */ /* escaped inside the function */
 }
 
 /**
@@ -166,7 +166,14 @@ function trp_sanitize_string( $filtered ){
 		$filtered = trim( preg_replace('/ +/', ' ', $filtered) );
 	}
 
-	return $filtered;
+    return trp_wp_kses( $filtered );
+}
+
+function trp_wp_kses($string){
+    if ( apply_filters('trp_apply_wp_kses_on_strings', true) ){
+        $string = wp_kses_post($string);
+    }
+    return $string;
 }
 
 /**

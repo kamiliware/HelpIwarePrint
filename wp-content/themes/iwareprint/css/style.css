@@ -15,7 +15,19 @@ body, a, h1, h2, h3, h4 {
     padding: 0;
     margin: 0;
 }
-
+.button {
+    background: #F21559;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 900;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 5px;
+}
+.button:hover {
+    background: #a10e3b;
+    color: #fff;
+}
 body {
     overflow-x: hidden;
 }
@@ -81,6 +93,11 @@ body > header {
     left: 0;
     right: 0;
     background: inherit;
+}
+@media screen and (max-width: 991px) {
+    body > header {
+        position: absolute;transform: none!important
+    }
 }
 .header-ph {
     height: 90px;
@@ -504,19 +521,9 @@ button#searchsubmit {
         margin: 30px auto 50px;
     }
 
-    .webinars, .outsourcing, .conference, .creator {
-        height: 380px;
-    }
-
-    .webinars a, .outsourcing a, .conference a, .creator a {
-        position: absolute;
-        bottom: 0;
-        left: 5%;
-    }
-
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1200px) {
 
     #links {
         text-align: left;
@@ -789,6 +796,13 @@ button#searchsubmit {
     height: auto;
 }
 
+#blog ul {
+    padding: 0 0 0 20px;
+    list-style: initial;
+    margin: 0 0 0 20px;
+    text-align: left;
+}
+
 .post-big {
     border-radius: 5px;
     margin-bottom: 30px;
@@ -865,12 +879,12 @@ button#searchsubmit {
 
     .post-big {
         float: left;
+        width: 100%;
     }
 
     .post-big img{
         margin-bottom: 0;
         float: left;
-        margin-right: 40px;
         max-width: 50%;
         height: 100%;
         object-fit: cover;
@@ -879,6 +893,8 @@ button#searchsubmit {
     .post-big-content {
         padding: 40px;
         text-align: left;
+        float: left;
+        width: 50%;
     }
 
     .post-big-content h4 {
@@ -1061,20 +1077,12 @@ footer .copy ul li{
     text-transform: none;
     padding: 12px 0 0;
 }
+
 .helpdesk-menu .withChildren li, .helpdesk-menu .noChildren li  {
     padding: 0
 }
 .helpdesk-menu .hamburger-menu-container a {
     padding: 0;
-}
-.helpdesk-menu .withChildren li a, .helpdesk-menu .noChildren li a {
-    display: block;
-    padding: 12px;
-    text-align: left;
-    font-weight: 400;
-}
-.helpdesk-menu .withChildren li a:hover {
-    color: #fff
 }
 
 .helpdesk-menu ul li:last-child {
@@ -1103,8 +1111,8 @@ footer .copy ul li{
 }
 
 .helpdesk-content img {
-    padding: 20px 0;
-    display: block;
+    /*     padding: 20px 0;
+        display: block; */
 }
 
 .helpdesk-content img.arrow-back {
@@ -1390,7 +1398,7 @@ footer .copy ul li{
     padding: 40px 0;
 }
 
-.topic {
+#faq .topic .inside {
     position: relative;
     margin: 0 auto 15px;
     background: #FFFFFF;
@@ -1402,22 +1410,104 @@ footer .copy ul li{
     border: 1px solid #0099FE;
 }
 
-.topic h3 {
+#faq .topic h3 {
     font-size: 1.5rem;
     text-align: left;
 }
 
-.topic img {
+#faq .topic img {
     position: absolute;
     top: 27px;
     right: 10px;
 }
 
-.subtopic ul {
+#faq .subtopic ul {
     position: relative;
 }
 
-.subtopic ul li {
+#faq .subtopic ul li {
+    background: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 4px 0 0 #E7E7E7;
+    margin-bottom: 15px;
+    position: relative;
+    text-align: left;
+}
+
+#faq .subtopic ul li::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: calc(100% + 20px);
+    width: 1px;
+    background: #F21559;
+    left: 25px;
+    top: 27px;
+    z-index: 2;
+}
+
+#faq .subtopic ul li:last-of-type::before {
+    height: 0;
+}
+
+#faq .subtopic ul li::after {
+    content: "•";
+    color: #F21559;
+    display: block;
+    position: absolute;
+    font-size: 5rem;
+    left: 11px;
+    top: 0;
+    padding-top: 17px;
+}
+
+#faq .subtopic ul li.subtopic-active {
+    border: 1px solid #F21559;
+}
+
+#faq .subtopic ul li.subtopic-active::before {
+    display: none;
+}
+
+#faq .subtopic ul li.subtopic-active .subtopic-title{
+    color: #0099FE;
+    display: block;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 15px;
+}
+
+.yearContainer .subtopic ul li p, #faq .subtopic ul li p {
+    font-size: 1.8rem;
+}
+.yearContainer .topic {
+    position: relative;
+    margin: 0 auto 15px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 0 0 #E7E7E7;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #0099FE;
+}
+
+.yearContainer .topic h3 {
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.yearContainer .topic img {
+    position: absolute;
+    top: 27px;
+    right: 10px;
+}
+
+.yearContainer .subtopic ul {
+    position: relative;
+}
+
+.yearContainer .subtopic ul li {
     background: #FFFFFF;
     border-radius: 5px;
     box-shadow: 0 4px 0 0 #E7E7E7;
@@ -1430,7 +1520,7 @@ footer .copy ul li{
     text-align: left;
 }
 
-.subtopic ul li::before {
+.yearContainer .subtopic ul li::before {
     content: '';
     display: block;
     position: absolute;
@@ -1442,11 +1532,11 @@ footer .copy ul li{
     z-index: 2;
 }
 
-.subtopic ul li:last-of-type::before {
+.yearContainer .subtopic ul li:last-of-type::before {
     height: 0;
 }
 
-.subtopic ul li::after {
+.yearContainer .subtopic ul li::after {
     content: "•";
     color: #F21559;
     display: block;
@@ -1457,19 +1547,19 @@ footer .copy ul li{
     padding-top: 17px;
 }
 
-.subtopic ul li.subtopic-active {
+.yearContainer .subtopic ul li.subtopic-active {
     border: 1px solid #F21559;
 }
 
-.subtopic ul li.subtopic-active::before {
+.yearContainer .subtopic ul li.subtopic-active::before {
     display: none;
 }
 
-.subtopic ul li.subtopic-active span{
+.yearContainer .subtopic ul li.subtopic-active span{
 
 }
 
-.subtopic ul li.subtopic-active span.subtopic-title{
+.yearContainer .subtopic ul li.subtopic-active span.subtopic-title{
     color: #0099FE;
     display: block;
     padding-bottom: 15px;
@@ -1477,7 +1567,7 @@ footer .copy ul li{
     margin-bottom: 15px;
 }
 
-.subtopic ul li p {
+.yearContainer .subtopic ul li p {
     font-size: 1.8rem;
 }
 
@@ -1514,42 +1604,42 @@ footer .copy ul li{
 
 @media only screen and (min-width: 1200px) {
 
-    .topic {
+    .yearContainer .topic .inside, #faq .topic .inside {
         padding: 20px 35px;
     }
 
-    .topic h3 {
+    .yearContainer .topic h3, #faq .topic h3 {
         font-size: 2.3rem;
     }
 
-    .topic img {
+    #faq .topic img {
         top: 37px;
         right: 35px;
     }
 
-    .subtopic ul li {
+    .yearContainer .subtopic ul li, #faq .subtopic ul li {
         font-size: 2.3rem;
         line-height: 3rem;
     }
 
-    .subtopic ul li::before {
+    .yearContainer .subtopic ul li::before, #faq .subtopic ul li::before {
         top: 29px;
     }
 
-    .subtopic ul li.subtopic-active {
+    .yearContainer .subtopic ul li.subtopic-active, #faq .subtopic ul li.subtopic-active {
         border: 1px solid #F21559;
     }
 
-    .subtopic ul li.subtopic-active::before {
+    .yearContainer .subtopic ul li.subtopic-active::before, #faq .subtopic ul li.subtopic-active::before {
         display: none;
     }
 
-    .subtopic ul li.subtopic-active span {
+    .yearContainer .subtopic ul li.subtopic-active span, #faq .subtopic ul li.subtopic-active span {
         font-size: 1.5rem;
         line-height: 2.2rem;
     }
 
-    .subtopic ul li.subtopic-active span.subtopic-title {
+    .yearContainer .subtopic ul li.subtopic-active span.subtopic-title, #faq .subtopic ul li.subtopic-active span.subtopic-title {
         font-size: 2.3rem;
         line-height: 3rem;
     }
@@ -2008,8 +2098,37 @@ h3#reply-title {
     border-radius: 5px;
     padding: 15px 30px;
     display: inline-block;
+    text-align: center;
+    white-space: nowrap;
 }
 #footer .f-btn:hover, #bottom-contact .f-btn:hover {background: #a10e3b}
+
+#bottom-contact-trigger {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #f1c119;
+    color: #333;
+    padding: 15px;
+    font-size: 30px;
+    border-radius: 8px 34px 34px 34px;
+    width: 60px;
+    height: 60px;
+    line-height: 30px;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,.26);
+    transition: ease all 250ms
+}
+#fc_frame {
+    transition: ease all 250ms
+}
+#bottom-contact-trigger.active, #fc_frame.active {
+    transform: translateY(-105px)
+}
+#bottom-contact-trigger:hover {
+    background: #fbc817
+}
 
 #footer .col-lg-3 .f-btn {
     font-size: 14px;
@@ -2162,14 +2281,20 @@ h3#reply-title {
         height: auto;
     }
 }
+@media screen and (max-width: 720px) {
+    #footer {
+        padding: 7rem 0 12rem;
+    }
+}
 
 #bottom-contact {
     background-color: transparent; /* Black background color */
     position: fixed; /* Make it stick/fixed */
     bottom: 0; /* Stay on top */
+    display: none;
     width: 100%; /* Full width */
     transition: bottom .7s; /* Transition effect when sliding down (and up) */
-    z-index: 9999;
+    z-index: 9;
 }
 /* Dodaj swój kod CSS tutaj.
 
@@ -2183,26 +2308,81 @@ http://www.w3schools.com/css/css_syntax.asp
 
 Koniec komentarza */
 
-.topic, .subtopic {cursor:pointer;}
+#faq .topic, .subtopic {cursor:pointer;}
 .sub-aktu {cursor:initial;}
-.subtopic {max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);}
-.subtopic li span:nth-of-type(2) {display:block;max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);font-size: 1.5rem;line-height: 2.2rem;}
-.subtopic li span {float:left;width:100%;}
-.subtopic li {transition:1s;border:1px solid #fff;float:left;width:100%;}
-.topic.is-open + .subtopic, .topic.is-open + .subtopic li.subtopic-active span:nth-of-type(2) {max-height:18000px;transition: max-height 2s ease-in-out;}
-.subtopic ul li span.subtopic-title {transition:1s;padding-bottom: 0;border-bottom: 1px solid #fff;margin-bottom: 0;}
+#faq .subtopic {display: none;}
+#faq .subtopic li {border:1px solid #fff;width:100%;}
+#faq .subtopic ul li .subtopic-title {padding: 20px 20px 20px 50px;border-bottom: 1px solid #fff;margin-bottom: 0;}
+#faq .subtopic ul li .subtopic-content {padding: 20px 20px 20px 50px; display:none;}
 
-.helpdesk-menu li {color: #180F4C;font-weight: 700;text-transform: uppercase; border-bottom:0;border-top:1px solid #eee; cursor: pointer; padding: 12px; font-size: 17px}
-.helpdesk-menu li:hover, .helpdesk-menu li.active {background: #f4f4f4}
+.yearContainer .topic, .yearContainer .subtopic {cursor:pointer;}
+.yearContainer .sub-aktu {cursor:initial;}
+.yearContainer .subtopic {max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);}
+.yearContainer .subtopic li span:nth-of-type(2) {display:block;max-height:0;overflow:hidden;transition:max-height 1s cubic-bezier(0, 1, 0, 1);font-size: 1.5rem;line-height: 2.2rem;}
+.yearContainer .subtopic li span {float:left;width:100%;}
+.yearContainer .subtopic li {transition:1s;border:1px solid #fff;float:left;width:100%;}
+.yearContainer .topic.is-open + .subtopic, .topic.is-open + .subtopic li.subtopic-active span:nth-of-type(2) {max-height:18000px;transition: max-height 2s ease-in-out;}
+.yearContainer .subtopic ul li span.subtopic-title {transition:1s;padding-bottom: 0;border-bottom: 1px solid #fff;margin-bottom: 0;}
+
+.helpdesk-menu li {color: #180F4C;font-weight: 400; border-bottom:0;border-top:1px solid #eee; cursor: pointer; padding: 12px; font-size: 17px}
+.helpdesk-menu li:hover, .helpdesk-menu li.active {color: #0099FE}
+
+.helpdesk-menu li.active > ul li:first-child {
+    border-top-color: #0099FE
+}
+.helpdesk-menu li.cat-main > span {
+    position: relative;
+    padding-left: 30px;
+    text-transform: uppercase;
+}
+.helpdesk-menu li ul.noChildren li span {
+    padding: 10px 10px 10px 30px;
+    display:block;
+    text-align: left;
+}
+.helpdesk-menu li ul.withChildren li span {
+    padding-left: 45px;
+    font-size: 15px;
+    position: relative;
+    display: block
+}
+.helpdesk-menu li.cat-sub > span {
+    color: #180F4C;
+    padding-left: 30px;
+    font-weight: 400;
+    position: relative;
+    display: block;
+}
+.helpdesk-menu li.cat-sub:hover > span {
+    color:#0099FE;
+}
+.helpdesk-menu li.cat-main > span:before,
+.helpdesk-menu li.cat-sub > span:before {
+    position: absolute;
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: 1px solid #180F4C;
+    left: 10px;
+    top: 50%;
+    margin-top: -3.5px;
+    transform: rotate(45deg);
+    border-left: none;
+    border-bottom: none;
+}
+.helpdesk-menu .withChildren li a {
+    display:block;
+    padding: 10px 10px 10px 30px;
+    text-align: left
+}
 .helpdesk-menu .helpdesk-category a {text-transform:none;font-weight:300;color:#000;}
 .helpdesk-menu ul {padding:0;}
 .helpdesk-menu .helpdesk-category a:hover {color:#0099FE;}
 .helpdesk-menu .helpdesk-category a.active {color:#0099FE;}
 
-.helpdesk-menu .cat-sub {color: #0099fe; font-weight: 400;}
-.helpdesk-menu .cat-sub:hover, .helpdesk-menu .cat-sub.active {color: #fff; background: #0099fe}
+/* .helpdesk-menu .cat-sub:hover, .helpdesk-menu .cat-sub.active {color: #fff; background: #0099fe}
 .helpdesk-menu .cat-sub li a {color: #fff}
-.helpdesk-menu .cat-sub li:hover {background: #00558d}
+.helpdesk-menu .cat-sub li:hover {background: #00558d} */
 
 #list-months {background:#fff; padding: 70px 0 60px; box-shadow: 0 3px 23px 0 rgba(0,0,0,.1); position: relative}
 #list-months li, .list-top .new li {padding-left:190px;}

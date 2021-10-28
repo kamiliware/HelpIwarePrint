@@ -67,7 +67,8 @@ function helpdesk_taxonomy() {
             'production',
             'reseller',
             'preflight',
-            'podzlecanie'
+            'podzlecanie',
+            'pakiet_wdrozeniowy'
         ),
         array(
             'rewrite'      => [
@@ -233,6 +234,24 @@ function helpdesk_post_type() {
         ],
         'show_in_rest' => true,
     ]);
+    register_post_type('pakiet_wdrozeniowy', [
+        'rewrite'      => [
+            'with_front' => false,
+            'has-archive' => false,
+            'slug'       => 'pakiet-wdrozeniowy',
+        ],
+        'has-archive' => false,
+        'hierarchical' => true,
+        'public'       => true,
+        'supports'     => [ 'title', 'editor', 'page-attributes' ],
+        'labels'       => [
+            'name' => 'Pakiet Wdrożeniowy',
+            'all_items' => 'Lista wpisów',
+            'singular_name' => 'Pakiet Wdrożeniowy',
+            'add_new' => 'Dodaj wpis'
+        ],
+        'show_in_rest' => true,
+    ]);
 }
 
 add_action( 'init', function () {
@@ -349,11 +368,11 @@ function monthTranslator(string $key) {
 }
 
 // Enable comments
-function enable_comments_for_all(){
-    global $wpdb;
-    $wpdb->query( $wpdb->prepare("UPDATE $wpdb->posts SET comment_status = 'open'")); // Enable comments
-    $wpdb->query( $wpdb->prepare("UPDATE $wpdb->posts SET ping_status = 'open'")); // Enable trackbacks
-} enable_comments_for_all();
+// function enable_comments_for_all(){
+//     global $wpdb;
+//     $wpdb->query( $wpdb->prepare("UPDATE $wpdb->posts SET comment_status = 'open'")); // Enable comments
+//     $wpdb->query( $wpdb->prepare("UPDATE $wpdb->posts SET ping_status = 'open'")); // Enable trackbacks
+// } enable_comments_for_all();
 
 // Wydarzenia ACF
 if( function_exists('acf_add_options_page') ) {
@@ -370,11 +389,23 @@ if( function_exists('acf_add_options_page') ) {
 }
 function wpse_89494_enqueue_scripts() {
     if ( has_nav_menu( 'top' ) ) {
+        wp_enqueue_script(
+            'wpse_89494_script_2',
+            get_template_directory_uri() . '/js/functions.js',
+            array(),
+            '1.02'
+        );
         wp_enqueue_style(
             'wpse_89494_style_1',
             get_template_directory_uri() . '/css/style.css',
             array(),
-            '4.9'
+            '4.22'
+        );
+        wp_enqueue_style(
+            'wpse_89494_style_2',
+            get_template_directory_uri() . '/style.css',
+            array(),
+            '1.11'
         );
     }
 }
@@ -393,121 +424,3 @@ function dg_big_image_size_threshold( $threshold ) {
     return 8000; // new threshold
 }
 add_filter('big_image_size_threshold', 'dg_big_image_size_threshold', 100, 1);
-
-//TŁUMACZENIE
-
-/**
- * Outputs localized string if polylang exists or  output's not translated one as a fallback
- *
- * @param string $string
- *
- * @return  void
- */
-function pl_e(string $string = '' ) {
-    if ( function_exists( 'pll_e' ) ) {
-        pll_e( $string );
-    } else {
-        echo $string;
-    }
-}
-
-/**
- * Returns translated string if polylang exists or  output's not translated one as a fallback
- *
- * @param string $string
- *
- * @return string
- */
-function pl__(string $string = '' ): string
-{
-    if ( function_exists( 'pll__' ) ) {
-        return pll__( $string );
-    }
-
-    return $string;
-}
-
-/**
- * Returns translated string if polylang exists or  output's not translated one as a fallback
- *
- * @param string $string
- *
- * @return string
- */
-function pl_t(string $string = '', $lang = ''): string
-{
-    if ( function_exists( 'pll_translate_string' ) ) {
-        return pll_translate_string( $string , $lang);
-    }
-
-    return $string;
-}
-
-if ( function_exists( 'pll_get_post_language' ) ) {
-    $post_id = 0;
-    return pll_get_post_language($post_id);
-}
-
-// these function prefixes can be either you are comfortable with.
-    add_action('init', function () {
-        pll_register_string('baza-wiedzy', 'Baza wiedzy');
-        pll_register_string('nawigacja-po-systemie', 'Nawigacja po systemie. Instrukcje techniczne');
-        pll_register_string('every-question', 'Na każde pytanie jest odpowiedź');
-        pll_register_string('materials', 'Materiały do pobrania');
-        pll_register_string('materials-base', 'Baza materiałów iwarePRINT');
-        pll_register_string('go', 'Przejdź');
-        pll_register_string('baza-wiedzy-url', '/baza-wiedzy');
-        pll_register_string('do-pobrania-url', '/do-pobrania');
-        pll_register_string('upcoming-webinars', 'Najbliższe webinaria');
-        pll_register_string('webinaria-page-url', 'http://webinaria.iwareprint.pl/');
-        pll_register_string('sign-up', 'Zapisz się');
-        pll_register_string('strona-dedykowana-modulowi-podzlecania', 'Strona dedykowana Modułowi Podzlecania. Zobacz pełną listę drukarni korzystających.');
-        pll_register_string('podzlec-druk-url', 'http://podzlecdruk.pl/');
-        pll_register_string('print-wizard', 'Kreator wydruków');
-        pll_register_string('strona-dedykowana-modulowi-kreator', 'Strona dedykowana Modułowi Kreator. Poznaj możliwości graficzne kreatora.');
-        pll_register_string('upcoming-conference', 'Najbliższa konferencja');
-        pll_register_string('konferencja-url', 'http://konferencja.podzlecdruk.pl/');
-        pll_register_string('news', 'Aktualizacje');
-        pll_register_string('read-more', 'Czytaj więcej');
-        pll_register_string('updates-url', '/aktualizacje');
-        pll_register_string('full-list', 'Pełna lista');
-        pll_register_string('see-full-list', 'Zobacz pełną listę');
-        pll_register_string('materials-with-break', 'Materiały<br>do pobrania');
-        pll_register_string('see', 'Zobacz');
-        pll_register_string('video-tutorials', 'Materiały wideo');
-        pll_register_string('lok', 'Mamy dla Ciebie sporo wiedzy!');
-        pll_register_string('tutorials-url', '/materialy-wideo');
-        pll_register_string('see-all', 'Zobacz wszystkie');
-        pll_register_string('ip-blog', 'Blog IwarePrint');
-        pll_register_string('no-posts', 'Nie ma żadnych postów.');
-        pll_register_string('blog-url', 'https://blog.iwareprint.pl');
-        pll_register_string('load-more', 'Wczytaj więcej');
-        pll_register_string('watch-tips', 'Obejrzyj nasze wskazówki');
-        pll_register_string('join', 'Dołącz');
-        pll_register_string('on-hand','Na bieżąco i z tematem pod reką.');
-        pll_register_string('good-contact','Cenimy sobie dobry kontakt');
-        pll_register_string('book-online','Rezerwuj spotkanie ON-LINE');
-        pll_register_string('tech-support','Pomoc techniczna');
-        pll_register_string('Video tutorials', 'Filmy instruktażowe');
-        pll_register_string('updates', 'Aktualizacje iP');
-        pll_register_string('services','Serwisy iwarePrint');
-        pll_register_string('modules','Moduły');
-        pll_register_string('outsourcing','Podzlecanie');
-        pll_register_string('production', 'Produkcja');
-        pll_register_string('trader','Handlowiec');
-        pll_register_string('reseller','Reseller');
-        pll_register_string('preflight','Preflight');
-        pll_register_string('wizard', 'Kreator');
-        pll_register_string('benefits','Korzyści');
-        pll_register_string('traits', 'Cechy');
-        pll_register_string('pricing', 'Cennik');
-        pll_register_string('cookies', 'Korzystając z tej witryny, akceptujesz zobowiązania wynikające z postanowień Regulaminu ogólnego iwarePrint. Używamy plików cookies, celem ułatwienia korzystania z serwisu. Kontynuowanie przeglądania naszej strony oznacza zgodę na ich użycie.');
-        pll_register_string('rulebook', 'Regulamin serwisu iwarePrint');
-        pll_register_string('privacy-policy', 'Polityka Prywatności');
-        pll_register_string('presentation-registration', 'Umów się na prezentację systemu');
-        pll_register_string('booking','Zarezerwuj');
-        pll_register_string('fast-contact','Szybkie pytanie, szybka odpowiedź, szybki kontakt.');
-        pll_register_string('selling','w sprawach sprzedażowych');
-        pll_register_string('calling', 'Dzwonię');
-
-});

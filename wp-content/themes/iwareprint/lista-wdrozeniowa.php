@@ -67,10 +67,10 @@
 
     </section>
 
-<!--    <section id="list-months" class="accordion">-->
-<!---->
-<!--        <div class="container">-->
-<!--            --><?php
+    <!--    <section id="list-months" class="accordion">-->
+    <!---->
+    <!--        <div class="container">-->
+    <!--            --><?php
 ////            global $more; $more = false; # some wordpress wtf logic
 //            $posts = get_posts(array(
 //                'post_type' => 'aktualizacje',
@@ -111,66 +111,66 @@
 //
 //            $month =$postMonth;
 //            ?>
-<!--            <div class="subtopic sub-aktu">-->
-<!--                <ul>-->
-<!--                    --><?php
+    <!--            <div class="subtopic sub-aktu">-->
+    <!--                <ul>-->
+    <!--                    --><?php
 //                    } ?>
-<!---->
-<!---->
-<!--                    <li>-->
-<!--                            <span class="subtopic-title">-->
-<!--                            <em>--><?php //echo get_the_date( 'Y-m-d' ); ?><!--</em>-->
-<!--                                <h3 style="color: #333;padding: 0 0 10px;">--><?//= the_title(); ?><!--</h3>-->
-<!--                                --><?php
+    <!---->
+    <!---->
+    <!--                    <li>-->
+    <!--                            <span class="subtopic-title">-->
+    <!--                            <em>--><?php //echo get_the_date( 'Y-m-d' ); ?><!--</em>-->
+    <!--                                <h3 style="color: #333;padding: 0 0 10px;">--><?//= the_title(); ?><!--</h3>-->
+    <!--                                --><?php
 //                                $categories = get_the_category();
 //                                if ( ! empty( $categories ) ) {
 //                                    echo '<h4 style="font-size: 20px;color: #f21559;">' . esc_html( $categories[0]->name ) . '</h4>';
 //                                }
 //                                ?>
-<!--                                <p style="font-size: 16px;line-height: 1.4;">-->
-<!--                                    --><?//= the_content();?>
-<!--                                </p>-->
-<!--                                <a style="color: #0099fe;" href="--><?//= get_permalink($post->ID) ?><!--" class="read-link">Czytaj więcej</a>-->
-<!--                            </span>-->
-<!---->
-<!--                    </li>-->
-<!---->
-<!---->
-<!--                    --><?php //endforeach; ?>
-<!--                </ul>-->
-<!--            </div>-->
-<!---->
-<!--        </div>-->
-<!---->
-<!--    </section>-->
+    <!--                                <p style="font-size: 16px;line-height: 1.4;">-->
+    <!--                                    --><?//= the_content();?>
+    <!--                                </p>-->
+    <!--                                <a style="color: #0099fe;" href="--><?//= get_permalink($post->ID) ?><!--" class="read-link">Czytaj więcej</a>-->
+    <!--                            </span>-->
+    <!---->
+    <!--                    </li>-->
+    <!---->
+    <!---->
+    <!--                    --><?php //endforeach; ?>
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!---->
+    <!--        </div>-->
+    <!---->
+    <!--    </section>-->
     <section id="yearRoadmap">
         <div class="container">
             <h2>Pozostałe aktualizacje</h2>
             <?php
-                $posts = get_posts(array(
-                            'post_type' => 'aktualizacje',
-                            'orderby' => 'date',
-                            'order' => 'desc',
-                            'numberposts' => -1
-                        ));
-                $postArrangedByYear = [];
-                $currYear = date('Y');
-                foreach($posts as $post):
-                    $postArrangedByYear[date('Y',strtotime($post->post_date))][date('F',strtotime($post->post_date))][] = $post;
-                endforeach;
+            $posts = get_posts(array(
+                'post_type' => 'aktualizacje',
+                'orderby' => 'date',
+                'order' => 'desc',
+                'numberposts' => -1
+            ));
+            $postArrangedByYear = [];
+            $currYear = date('Y');
+            foreach($posts as $post):
+                $postArrangedByYear[date('Y',strtotime($post->post_date))][date('F',strtotime($post->post_date))][] = $post;
+            endforeach;
             if (!empty($postArrangedByYear)):?>
-            <div id="roadmapWrapper">
-                <ul>
-                    <?php foreach($postArrangedByYear as $key => $year): ?>
-                        <li>
-                            <a data-year="<?= $key ?>" href="#<?= $key ?>" <?php if ($currYear === strval($key)): ?> class="active" <?php endif;?>>
-                                <span></span>
-                                <?= $key ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+                <div id="roadmapWrapper">
+                    <ul>
+                        <?php foreach($postArrangedByYear as $key => $year): ?>
+                            <li>
+                                <a data-year="<?= $key ?>" href="#<?= $key ?>" <?php if ($currYear === strval($key)): ?> class="active" <?php endif;?>>
+                                    <span></span>
+                                    <?= $key ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             <?php endif; ?>
         </div>
     </section>
@@ -181,11 +181,11 @@
 
                 <div class="yearContainer" data-year="<?= $key?>" <?php if ($currYear !== strval($key)): ?>style="display: none"<?php endif;?>>
                     <?php foreach ($orderedByYear as $keyInner => $orderedByMonth):?>
-                    <div class="topic"><h3 id=""><?= ucfirst(monthTranslator($keyInner) . ' ' . $key) ?><img src="<?= get_template_directory_uri()?>/img/arrow_down.png" alt="rozwiń" /></div>
+                        <div class="topic"><h3 id=""><?= ucfirst(monthTranslator($keyInner) . ' ' . $key) ?><img src="<?= get_template_directory_uri()?>/img/arrow_down.png" alt="rozwiń" /></div>
                         <div class="subtopic sub-aktu">
                             <ul>
-                            <?php foreach ($orderedByMonth as $post): ?>
-                                <li>
+                                <?php foreach ($orderedByMonth as $post): ?>
+                                    <li>
                                         <span class="subtopic-title">
                                         <em><?php echo get_the_date( 'Y-m-d' ); ?></em>
                                             <h4 style="color: #333;padding: 0 0 10px;"><?= $post->post_title ?></h4>
@@ -202,8 +202,8 @@
                                                 <a target="_blank" style="color: #0099fe;" href="<?= get_field('link_do_bazy_wiedzy') ?>" class="read-link">Czytaj więcej</a>
                                             <?php endif; ?>
                                         </span>
-                                </li>
-                            <?php endforeach; ?>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     <?php endforeach; ?>

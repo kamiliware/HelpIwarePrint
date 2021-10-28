@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2020 ServMask Inc.
+ * Copyright (C) 2014-2018 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,10 +23,6 @@
  * ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die( 'Kangaroos cannot jump here' );
-}
-
 // Include all the files that you want to load in here
 require_once AI1WM_VENDOR_PATH .
 			DIRECTORY_SEPARATOR .
@@ -39,7 +35,7 @@ require_once AI1WM_VENDOR_PATH .
 			'Bandar.php';
 
 
-if ( defined( 'WP_CLI' ) ) {
+if ( class_exists( 'WP_CLI' ) ) {
 	require_once AI1WM_VENDOR_PATH .
 				DIRECTORY_SEPARATOR .
 				'servmask' .
@@ -133,6 +129,14 @@ require_once AI1WM_VENDOR_PATH .
 			DIRECTORY_SEPARATOR .
 			'servmask' .
 			DIRECTORY_SEPARATOR .
+			'filter' .
+			DIRECTORY_SEPARATOR .
+			'class-ai1wm-recursive-newline-filter.php';
+
+require_once AI1WM_VENDOR_PATH .
+			DIRECTORY_SEPARATOR .
+			'servmask' .
+			DIRECTORY_SEPARATOR .
 			'archiver' .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-archiver.php';
@@ -185,6 +189,12 @@ require_once AI1WM_VENDOR_PATH .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-database-utility.php';
 
+require_once AI1WM_VENDOR_PATH .
+			DIRECTORY_SEPARATOR .
+			'math' .
+			DIRECTORY_SEPARATOR .
+			'BigInteger.php';
+
 require_once AI1WM_CONTROLLER_PATH .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-main-controller.php';
@@ -213,6 +223,10 @@ require_once AI1WM_CONTROLLER_PATH .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-feedback-controller.php';
 
+require_once AI1WM_CONTROLLER_PATH .
+			DIRECTORY_SEPARATOR .
+			'class-ai1wm-report-controller.php';
+
 require_once AI1WM_EXPORT_PATH .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-export-init.php';
@@ -235,31 +249,11 @@ require_once AI1WM_EXPORT_PATH .
 
 require_once AI1WM_EXPORT_PATH .
 			DIRECTORY_SEPARATOR .
-			'class-ai1wm-export-enumerate-content.php';
-
-require_once AI1WM_EXPORT_PATH .
-			DIRECTORY_SEPARATOR .
-			'class-ai1wm-export-enumerate-media.php';
-
-require_once AI1WM_EXPORT_PATH .
-			DIRECTORY_SEPARATOR .
-			'class-ai1wm-export-enumerate-plugins.php';
-
-require_once AI1WM_EXPORT_PATH .
-			DIRECTORY_SEPARATOR .
-			'class-ai1wm-export-enumerate-tables.php';
+			'class-ai1wm-export-enumerate.php';
 
 require_once AI1WM_EXPORT_PATH .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-export-content.php';
-
-require_once AI1WM_EXPORT_PATH .
-			DIRECTORY_SEPARATOR .
-			'class-ai1wm-export-media.php';
-
-require_once AI1WM_EXPORT_PATH .
-			DIRECTORY_SEPARATOR .
-			'class-ai1wm-export-plugins.php';
 
 require_once AI1WM_EXPORT_PATH .
 			DIRECTORY_SEPARATOR .
@@ -279,11 +273,11 @@ require_once AI1WM_EXPORT_PATH .
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .
-			'class-ai1wm-import-upload.php';
+			'class-ai1wm-import-compatibility.php';
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .
-			'class-ai1wm-import-compatibility.php';
+			'class-ai1wm-import-upload.php';
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .
@@ -291,19 +285,11 @@ require_once AI1WM_IMPORT_PATH .
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .
-			'class-ai1wm-import-confirm.php';
-
-require_once AI1WM_IMPORT_PATH .
-			DIRECTORY_SEPARATOR .
 			'class-ai1wm-import-blogs.php';
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .
-			'class-ai1wm-import-options.php';
-
-require_once AI1WM_IMPORT_PATH .
-			DIRECTORY_SEPARATOR .
-			'class-ai1wm-import-permalinks.php';
+			'class-ai1wm-import-confirm.php';
 
 require_once AI1WM_IMPORT_PATH .
 			DIRECTORY_SEPARATOR .
@@ -352,6 +338,10 @@ require_once AI1WM_MODEL_PATH .
 require_once AI1WM_MODEL_PATH .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-feedback.php';
+
+require_once AI1WM_MODEL_PATH .
+			DIRECTORY_SEPARATOR .
+			'class-ai1wm-report.php';
 
 require_once AI1WM_MODEL_PATH .
 			DIRECTORY_SEPARATOR .
